@@ -12,7 +12,7 @@ const {seed} = require('./seeder.js');
 app.use(express.json());
 app.use(cors());
 
-// app.post('/seed', seed);
+app.post('/seed', seed);
 
 
 
