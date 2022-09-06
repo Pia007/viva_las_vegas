@@ -1,5 +1,5 @@
 // configure server to use dotenv
-require("dotenv").config();
+// require("dotenv").config();
 
 
 const express = require('express');
@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 
 //destructure the port from the .env file
-const {SERVER_PORT} = process.env;
+const {SERVER_PORT} = 9007;
 // const {seed} = require('./seeder.js');
 
 
