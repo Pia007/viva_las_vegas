@@ -1,18 +1,32 @@
 // configure server to use dotenv
 require("dotenv").config();
 
+
 const express = require('express');
-const app = express();
 const cors = require('cors');
+
+const app = express();
 
 //destructure the port from the .env file
 const {SERVER_PORT} = process.env;
-const {seed} = require('./seeder.js');
+// const {seed} = require('./seeder.js');
 
-app.use(express.json());
+
 app.use(cors());
 
-app.post('/seed', seed);
+app.use(express.json());
+
+
+const {
+    getLocations 
+    // addLocation
+} = require('./controller.js');
+
+
+// app.post('/seed', seed);
+
+app.get('/api/locations', getLocations);
+// app.post('/api/locations', addLocation);
 
 
 
