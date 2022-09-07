@@ -1,0 +1,183 @@
+body {
+    background-image: url("https://i.ibb.co/FnNtNLs/las-vegas2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+
+    font-family: 'RaleWay', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+header {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+div > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background: transparent; 
+    /* box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); */
+    /* text-shadow: 2px 2px #20d693; */
+}
+
+ul > li {
+    padding: 10px;
+    margin: 10px 20px;
+    border: 2px double #20d693;
+    border-radius: 5px;
+    /* background: linear-gradient(145deg, #394d93, #30417b); */
+    box-shadow:  5px 5px 10px #2d3d74,
+        -5px -5px 10px #3d539e;
+}
+
+ul > li:hover,
+ul > li:active,
+ul > li:focus {
+    background: #20d693;
+    cursor: pointer;
+    box-shadow:  inset 5px 5px 10px #2d3d74,
+        -5px -5px 10px #3d539e;
+}
+li a {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.25em;
+    
+}
+li a:hover,
+li a:active,
+li a:focus {
+    color: #3d539e;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+section {
+    font-weight: bold;
+    /* font-size: 4.5em; */
+    color: #20d693;
+    font-family: 'RaleWay Dots', sans-serif;
+    text-shadow: 5px 5px 3px #3d539e;
+}
+h1 {
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+section > div {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 20px;
+}
+form {
+    width: 100%;
+    display: flex;
+    padding: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 2px solid #20d693; */
+}
+
+input {
+    height: 35px;
+    width: 75%;
+    margin-bottom: 30px;
+    padding: 5px 8px;
+
+    font-size: 18px;
+    font-weight: bold;
+    color: #3d539e;
+
+    border: 3px double #20d693;
+    border-radius: 8px;
+    background: #a6d7c5;
+    box-shadow: inset;
+    box-shadow: inset 9px 9px 18px #8db7a7,
+            inset -9px -9px 18px #bff7e3;
+    font-family: "RaleWay", sans-serif;
+}
+
+::placeholder {
+    color: #3d539e;
+}
+input:hover,
+input:focus,
+input:active {
+    outline: none;
+    border: 3px double #3d539e;
+    box-shadow: inset 9px 9px 18px #8db7a7,
+            inset -9px -9px 18px #bff7e3;
+	outline: none;
+}
+button,
+.close {
+    height: 35px;
+    border: 2px double #3d539e;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "RaleWay", sans-serif;
+    font-weight: 600;
+    color: #3d539e;
+    background: linear-gradient(145deg, #b2e6d3, #95c2b1);
+    box-shadow:  3px 3px 6px #2d3d74,
+        -3px -3px 6px #3d539e;
+}
+
+button:hover,
+button:focus,
+button:active {
+    border: 2px double #20d693;
+    background: transparent;
+    color: #20d693;
+    /* box-shadow:  5px 5px 10px #2d3d74,
+        -5px -5px 10px #3d539e; */
+    cursor: pointer;
+    box-shadow: inset 3px 3px 6px #2d3d74,
+        -3px -3px 6px #3d539e;
+}
+.dreams-list {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    /* border: 2px solid #20d693; */
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 3px double #20d693;
+}
+
+p {
+    font-size: .75em;
+    font-weight: bold;
+    color: #20d693;
+    font-family: 'RaleWay Dots', sans-serif;
+    text-shadow: 5px 5px 3px #3d539e;
+    text-align: center;
+}
+
+
+/* .card {
+    width: 300px
+} */

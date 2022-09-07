@@ -1,44 +1,86 @@
 [
     {
-    "id": 1,
-    "location": "Red Rock Canyon",
-    "text": "This is a test",
-    "image": "http://www.example.com/image.jpg",
-    "secret": "This is a secret"
+        "id": 1,
+        "type": "Family",
+        "name": "Red Rock Canyon",
+        "text": "This is a test",
+        "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
+        "secret": "This is a secret",
+        "likes": 0
     },
     {
-    "id": 2,
-    "name": "The Stratosphere",
-    "text": "This is a test",
-    "image": "http://www.example.com/image.jpg",
-    "secret": "This is a secret"
+        "id": 2,
+        "type": [
+            "Family",
+            "Casino",
+            "Hotel",
+            "Night-Life"
+        ],
+        "name": "The Stratosphere",
+        "text": "This is a test",
+        "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
+        "secret": "This is a secret",
+        "likes": 5
     },
     {
-    "id": 3,
-    "name": "The Bellagio Fountains",
-    "text": "This is a test",
-    "image": "http://www.example.com/image.jpg",
-    "secret": "This is a secret"
+        "id": 3,
+        "type": [
+            "Family",
+            "Casino",
+            "Night-Life",
+            "Restaurants",
+            "Hotel"
+        ],
+        "name": "The Bellagio Fountains",
+        "text": "This is a test",
+        "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
+        "secret": "This is a secret",
+        "likes": 0
     },
     {
-    "id": 1,
-    "name": "New York New York",
-    "text": "This is a test",
-    "image": "http://www.example.com/image.jpg",
-    "secret": "This is a secret"
+        "id": 4,
+        "type": [
+            "Family",
+            "Casino",
+            "Night-Life",
+            "Restaurants",
+            "Hotel"
+        ],
+        "name": "New York New York",
+        "text": "This is a test",
+        "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
+        "secret": "This is a secret",
+        "likes": 0
     },
     {
-    "id": 1,
-    "name": "The Venetian",
-    "text": "This is a test",
-    "image": "http://www.example.com/image.jpg",
-    "secret": "This is a secret"
+        "id": 5,
+        "type": [
+            "Family",
+            "Casino",
+            "Night-Life",
+            "Restaurants",
+            "Hotel"
+            ],
+        "name": "The Venetian",
+        "text": "This is a test",
+        "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
+        "secret": "This is a secret",
+        "likes": 0
     },
     {
-    "id": 1,
-    "location": "The Mirage",
-    "text": "This is a test",
-    "image": "http://www.example.com/image.jpg",
-    "secret": "This is a secret"
+        "id": 6,
+        "type": [
+            "Family",
+            "Casino",
+            "Night-Life",
+            "Restaurants",
+            "Hotel"
+        ],
+        "name": "The Mirage",
+        "text": "This is a test",
+        "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
+        "secret": "This is a secret",
+        "likes": 0
     }
+
 ]
