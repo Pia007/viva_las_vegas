@@ -22,25 +22,20 @@
         <div class="row d-flex flex-row justify-content-between">
             <p><a href="/">Viva Las Vegas</a></p>
             <ul>
-                <li><a href="loacations.html">Locations</a></li>
+                <li><a href="/">Locations</a></li>
                 <li><a href="#Sites">Sites</a></li>
             </ul>
         </div>
     </header>
     <div>
-        <section class="row d-flex flex-column text-align-center">
-            <h1 class="text-center">Viva Las Vegas!</h1>
+        <section class="row d-flex flex-column text-align-center px-3">
+            <!-- <h1 class="text-center">Viva Las Vegas!</h1> -->
             <h2>Find out about our great sites and venues to visit!</h2>
         </section>
-        <sectoion class="row d-flex flex-column">
+        <!-- <sectoion class="row d-flex flex-column">
             <div class="col d-flex flex-row justify-content-around">
         
-            <!-- <div>
-                <form action="">
-                    <input type="text" placeholder="Enter Your Wildest Dream">
-                    <button type="submit"> Let's Party</button>
-                </form>
-            </div> -->
+            
                 <div class="">
                     <button type="submit"> Family</button>
                 </div>
@@ -57,26 +52,28 @@
                     <button type="submit">Shows</button>
                 </div>
             </div>
-        </section>
+        </section> -->
         <section id="posts" class="row d-flex flex-row justify-content-around mb-6 px-3"></section>
 
         <section id="add-post">
             <div class="row">
-                <div class="col">
-                    <h3>Share a Venue</h3>
-                </div>
-                <form action="">
-            
-                    <input type="text" id="venue-name" placeholder="Venue Name">
-                    <input type="text" id="venue-type" placeholder="Type of Venue">
-                    <div class="form-group">
-                        <div class="col-12">
-                            <textarea type="text" id="venue-details" rows="3" cols=20"placeholder="Tell us about your experience"></textarea>
-                        </div>
+                <form action="" class="p-2 py-4 col-md-8 col-lg-6 add-venue">
+                    <h3>Add a Venue</h3>
+                    <div class="form-group col">
+                        <input type="text" id="venue-name" placeholder="Venue Name" class="form-control" />
                     </div>
-                    <input type="url" id="venue-image" placeholder="Image URL https://example.com">
-                    <input type="text" id="venue-regrets" placeholder="Something outrageous you did">
-            
+                    <div class="form-group col">
+                    <input type="text" id="venue-type" placeholder="Type of Venue" class="form-control" />
+                    </div>
+                    <div class="form-group col">
+                        <input type="text" id="venue-details" placeholder="Tell us about your experience" class="form-control"/>
+                    </div>
+                    <div class="form-group col">
+                    <input type="url" id="venue-image" placeholder="Image URL https://example.com" class="form-control" />
+                    </div>
+                    <div class="form-group col">
+                    <input type="text" id="venue-regrets" placeholder="Something outrageous you did" class="form-control" />
+                        </div>
                     <button id="add-button" type="submit"> Add Venue</button>
                 </form>
             </div>

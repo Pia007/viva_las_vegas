@@ -58,5 +58,12 @@ module.exports = {
                 return res.status(200).send(locations);
             }
         }
-    }
+    },
+
+    //add function to get comments based on location
+    // getComment: (req, res) => {
+    //     let {id} = req.params;
+    //     id = Number(id); 
+    //     console.log(id);
+
 }

@@ -6,7 +6,19 @@
         "text": "This is a test",
         "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
         "secret": "This is a secret",
-        "likes": 0
+        "likes": 0,
+        "comments": [
+            {
+                "id": 1,
+                "text": "This is a comment",
+                "author": "Lisa Simpson"
+            },
+            {
+                "id": 2,
+                "text": "This is another comment",
+                "author": "Marge Simpson"
+            }
+        ]
     },
     {
         "id": 2,
@@ -20,7 +32,14 @@
         "text": "This is a test",
         "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
         "secret": "This is a secret",
-        "likes": 5
+        "likes": 5,
+        "comments": [
+            {
+                "id": 1,
+                "text": "This is a comment",
+                "author": "Obi Wan Kenobi"
+            }
+        ]
     },
     {
         "id": 3,
@@ -35,7 +54,19 @@
         "text": "This is a test",
         "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
         "secret": "This is a secret",
-        "likes": 0
+        "likes": 0,
+        "comments": [
+            {
+                "id": 1,
+                "text": "This is a comment",
+                "author": "Martha McFly"
+            },
+            {
+                "id": 2,
+                "text": "This is another comment",
+                "author": "Marty McFly"
+            }
+        ]
     },
     {
         "id": 4,
@@ -50,7 +81,19 @@
         "text": "This is a test",
         "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
         "secret": "This is a secret",
-        "likes": 0
+        "likes": 0,
+        "comments": [
+            {
+                "id": 1,
+                "text": "This is a comment",
+                "author": "John Snow"
+            },
+            {
+                "id": 2,
+                "text": "This is another comment",
+                "author": "Jane Snow"
+            }
+        ]
     },
     {
         "id": 5,
@@ -65,7 +108,19 @@
         "text": "This is a test",
         "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
         "secret": "This is a secret",
-        "likes": 0
+        "likes": 0,
+        "comments": [
+            {
+                "id": 1,
+                "text": "This is a comment",
+                "author": "John Doe"
+            },
+            {
+                "id": 2,
+                "text": "This is another comment",
+                "author": "Jane Doe"
+            }
+        ]
     },
     {
         "id": 6,
@@ -80,7 +135,18 @@
         "text": "This is a test",
         "imageURL": "https://i.ibb.co/ynzgwNj/Seven-Magic-Mountains.jpg",
         "secret": "This is a secret",
-        "likes": 0
+        "likes": 0,
+        "comments": [
+            {
+                "id": 1,
+                "text": "This is a comment",
+                "author": "John Blow"
+            },
+            {
+                "id": 2,
+                "text": "This is another comment",
+                "author": "Jane Blow"
+            }
+        ]
     }
-
 ]

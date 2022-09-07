@@ -57,8 +57,11 @@ const submitForm = (e) => {
 function createLocationCard(location) {
     const locationCard = document.createElement('div');
     locationCard.classList.add('card');
-    locationCard.classList.add('col-3');
-    locationCard.classList.add('p-3');
+    locationCard.classList.add('col-xs')
+    locationCard.classList.add('col-md-4');
+    locationCard.classList.add('col-lg-3');
+
+    locationCard.classList.add('p-2');
     locationCard.classList.add('m-2');
 
     locationCard.innerHTML = `
@@ -66,25 +69,57 @@ function createLocationCard(location) {
         <img class='card-img' alt=${location.name} src=${location.imageURL} />
         
         <div class='card-body py-2 px-0'>
-            <p class='card-title'>${location.text}</p>
+            <div class='likes-holder'>
+                <button onclick="likeLocation(${location.id})" class="btn btn-primary px-1 like-btn"><i class="fa fa-heart" aria-hidden="true"></i> </button>
+                <span class='likes-count'>${location.likes}</span>
+            </div>
+            <p class='card-text text-left'>${location.text}</p>
             <p class='text-left '>What happend in Vegas that you would like to stay in Vegas?</p>
-            <p>${location.secret}</p>
-            <button onclick="likeLocation(${location.id})" class="btn btn-primary px-1 like-btn"><i class="fa fa-heart" aria-hidden="true"></i> </button>
-            <span>${location.likes}</span>
+            <p class=''>${location.secret}</p>
+            
+            
         </div>
+
     `;
 
-    locationsDiv.appendChild(locationCard);       
+    locationsDiv.appendChild(locationCard); 
+    
+    
+    const commentsDiv = document.createElement('div');
+    commentsDiv.classList.add('comments-section');
+
+    location.comments.forEach(comment => {
+        const commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
+        commentDiv.innerHTML = `
+            <p class='my-2 text-left'>${comment.text}</p>
+            <p class='my-2 text-right'><em>~${comment.author}<em></span>
+        `;
+        commentsDiv.appendChild(commentDiv);
+
+    });
+
+    locationCard.appendChild(commentsDiv);
 }
+
+//create an array from the class see-comments
+// const commentBtns = document.getElementsByClassName('see-comments');
+
+
+
+
+// function to show comments for specific locations comment
+// const showComments = (e) => {
+
+//     console.log(commentBtns.length)
+//     for ()
+// }
 
 function displayLocations(arr) {
     locationsDiv.innerHTML = '';
     arr.forEach(createLocationCard);
 };
 
-// get the value of the span and add 1 to it
-// update the span with the new value
-// update the database with the new value
 
 function likeLocation(e) {
     let likeBtn = document.querySelector('.like-btn');
@@ -104,6 +139,7 @@ function likeLocation(e) {
     
 
 form.addEventListener('submit', submitForm);
+
 
 
 
