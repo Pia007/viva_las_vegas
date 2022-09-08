@@ -1,7 +1,9 @@
+require("dotenv").config();
+
 // configure server to use dotenv
 const path = require('path');
-require('dotenv').config({path: path.join(__dirname, '../.env')});
-// require("dotenv").config();
+// require('dotenv').config({path: path.join(__dirname, '../.env')});
+
 
 
 const express = require('express');
@@ -12,9 +14,9 @@ app.use(cors());
 
 //destructure the port from the .env file
 const {SERVER_PORT} = process.env;
-// const {seed} = require('./seeder.js');
+const {seed} = require('./seed.js');
 
-console.log(SERVER_PORT)
+console.log(SERVER_PORT);
 
 
 app.use(express.json());
@@ -25,22 +27,22 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.get('/', (req, res) => {
     res.sendfile(path.join(__dirname, '../index.html'));
 
-    rollbar.log("Some one has a Dream");
 });
 
+app.post('/seed', seed);
 
 const {
-    getLocations,
-    addLocation,
-    likeLocation
+    getVenues,
+    addVenue,
+    likeVenue
 } = require('./controller.js');
 
 
-// app.post('/seed', seed);
 
-app.get('/api/locations', getLocations);
-app.post('/api/locations', addLocation);
-app.put('/api/locations/:id', likeLocation);
+
+app.get('/api/venues', getVenues);
+app.post('/api/venues', addVenue);
+app.put('/api/venues/:id', likeVenue);
 
 
 

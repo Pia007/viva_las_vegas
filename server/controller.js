@@ -1,69 +1,84 @@
+require("dotenv").config();
+
+const {CONNECTION_STRING} = process.env;
+
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize(CONNECTION_STRING, {
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: false
+        }
+    }
+});
 
 const locations = require('./db.json');
 let locationID = locations.length+1;
 
 
 module.exports = {
-    getLocations: (req, res) => {
-        res.status(200).send(locations);
+    getVenues: (req, res) => {
+        sequelize.query(`SELECT * FROM venues;`)
+        .then(dbRes => {
+            res.status(200).send(dbRes[0]);
+        }).catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        });
         // console.log(locations);
     },
 
-    addLocation: (req, res) => {
-        let {type, name, text, imageURL, secret} = req.body;
-        let likes = 0;
+    addVenue: (req, res) => {
+        const {venue_name, type, details, image_url, website_url, likes} = req.body;
+        console.log(req.body);
 
-        const newLocation = {
-            id: locationID++,
-            name,
-            text,
-            imageURL,
-            secret,
-            likes
-        };
-
-        console.log('Location added:', newLocation);
-        console.log(locations.length);
-
-        locations.push(newLocation);
-
-        console.log(locations.length);
-        
-        res.status(200).send(locations);
+        sequelize.query(` INSERT INTO venues (venue_name, type, details, image_url, website_url, likes) 
+            VALUES ('${venue_name}', '${type}', '${details}', '${image_url}', '${website_url}', ${likes});`) 
+            .then(dbRes => {
+                console.log (`${venue_name} added to DB`);
+                res.status(200).send(dbRes[0]);
+            })
+            .catch(err => {
+                console.log(err);
+                res.sendStatus(500);
+            });
     },
+
 
     //create a function to like a location
-    likeLocation: (req, res) => {
-        let { id } = req.params;
-        id = Number(id);
-        console.log(id);
-        console.log(typeof id);
 
-        let { likes } = req.body;
-        likes = Number( likes);
-        console.log(`Add this many `, likes);
+    likeVenue: (req, res) => {
+        console.log(req.params.id);
+        let venueId = Number(req.params.id);
+        // venueId = Number(venueId);
+        console.log(venueId);
+        
+        console.log(req.body);
+        let addOneLike = req.body.likes;
 
-        //interate over the locations array
-        // find the location with the matching id
-        // update the likes property
-        // send the updated location back to the front end
+        
+        sequelize.query(`UPDATE venues SET likes = likes + 1 WHERE venue_id = ${venueId};`)
+        .then(dbRes => {
+            res.status(200).send(dbRes[0]);
+        }).catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        });
 
-        for (let i = 0; i < locations.length; i++) {
-            if (locations[i].id === id) {
-                console.log(`Current Likes:` , locations[i].likes);
-                locations[i].likes++;
-                console.log(`Updated Likes: `, locations[i].likes);
-                console.log(`${locations[i].name} now has ${locations[i].likes} like/s`);
-                console.log(locations[i]);
-                return res.status(200).send(locations);
-            }
-        }
-    },
+    }
 
-    //add function to get comments based on location
+    //add function to get comments based on venue
     // getComment: (req, res) => {
+    //     sequelize.query(`SELECT * FROM comments;`)
+    //     const {venue_id} = req.params;
+    //     let author = req.body.author;
     //     let {id} = req.params;
     //     id = Number(id); 
     //     console.log(id);
+    
+    // }
+
+    // add function to add a comment to a venue
 
 }
