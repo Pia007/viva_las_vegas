@@ -11,6 +11,8 @@ body {
 }
 
 body {
+    width: 100%;
+    min-height: 100vh;
     background-image: url("https://i.ibb.co/FnNtNLs/las-vegas2.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -20,8 +22,9 @@ body {
     font-family: 'RaleWay', sans-serif;
     color: #89aadb;
 
-    /* display: flex;
-    justify-content: center;
+    /* display: flex; */
+    text-align: center;
+    /* justify-content: center;
     align-items: center;
     flex-direction: column; */
 }
@@ -46,37 +49,41 @@ div > ul {
     background: transparent; 
 }
 .logo {
-    width: 150px;
-    height: 100px;
+    width: 100px;
+    height: 75px;
+}
+.fa-bars {
+    color: #3d539e;
+    font-size: 25px;
 }
 
-ul > li {
-    padding: 10px;
-    margin: 10px 20px;
+.nav-item {
+    /* padding: 10px; */
+    margin: 0 10px;
     border: 2px double #20d693;
     border-radius: 5px;
     box-shadow:  5px 5px 10px #2d3d74,
         -5px -5px 10px #3d539e;
 }
 
-ul > li:hover,
-ul > li:active,
-ul > li:focus {
+.nav-item:hover,
+.nav-item:active,
+.nav-item:focus {
     background: #20d693;
     cursor: pointer;
     box-shadow:  inset 5px 5px 10px #2d3d74,
         -5px -5px 10px #3d539e;
 }
-li a {
-    padding: 10px;
+.nav-link {
+    padding: 5px 10px;
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     font-size: 1.25em;
     
 }
-li a:hover,
-li a:active,
-li a:focus {
+.nav-link:hover,
+.nav-link:active,
+.nav-link:focus {
     color: #3d539e;
     font-weight: bold;
     text-decoration: none;
@@ -86,17 +93,22 @@ section {
     font-weight: bold;
     text-shadow: 5px 5px 3px #3d539e;
 }
-h1 {
-    margin: 0;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 2px #89aadb;
+.intro { 
+    margin: auto;
 }
+
+/* h1 { */
+    /* margin: 0; */
+    /* margin-bottom: 30px; */
+    /* text-shadow: 2px 2px 2px #89aadb; */
+    /* font-size: 1.5em; */
+/* } */
 h2,
 h3 {
     margin: 0;
     margin-bottom: 15px;
     text-align: center;
-    text-shadow: 2px 2px 2px #89aadb;
+    /* text-shadow: 2px 2px 2px #89aadb; */
 }
 
 section > div {
@@ -206,7 +218,7 @@ p {
     padding: 0;
 }
 
-.fa {
+.fa-heart {
     color: #d45454;
     padding-top: 5px;
     font-size: 20px;
@@ -225,3 +237,39 @@ p {
     background:rgba(0, 0, 0, 0.8);
     border-radius: 5px;
 }
+
+
+/* BREAKPOINTS */
+
+@media screen and (min-width: 556px) {
+    h1 {
+        font-size: 64px;
+    }
+    h2 {
+        font-size: 40px;
+    }
+} 
+@media screen and (min-width:768px) {
+    h1 {
+        font-size: 72px;
+    }
+    h2 {
+        font-size: 48px;
+    }
+} 
+@media screen and (min-width:992px) {
+    h1 {
+        font-size: 80px;
+    }
+    h2 {
+        font-size: 56px;
+    }
+} 
+@media screen and (min-width:1200px) {
+    h1 {
+        font-size: 88px;
+    }
+    h2 {
+        font-size: 74px;
+    }
+} 
