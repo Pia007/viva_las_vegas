@@ -17,48 +17,44 @@
     <title>Viva Las Vegas</title>
 </head>
 
-<body class="container">
-    <header class="jumbotron-fluid">
-        <div class="row d-flex flex-row justify-content-between">
-            <p><a href="/">Viva Las Vegas</a></p>
-            <ul>
-                <li><a href="/">Locations</a></li>
-                <li><a href="#Sites">Sites</a></li>
-            </ul>
-        </div>
+<body class="">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light justify-content-between p-0">
+            <a class="navbar-brand" href="/"><img class="logo" src="vegas.logo.png" alt="las vegas logo"></a>
+            <button class="navbar-toggler mx-2 px-1" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    
+                <ul class="nav flex-column flex-md-row justify-content-center p-0 px-2">
+                    <li class="nav-item m-2 my-md-0">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item m-2 my-md-0">
+                        <a class="nav-link" href="venues.html">Venues</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <div>
         <section class="row d-flex flex-column text-align-center px-3">
             <!-- <h1 class="text-center">Viva Las Vegas!</h1> -->
-            <h2>Find out about our great sites and venues to visit!</h2>
+            <h3>Share and View some great places!</h3>
         </section>
-        <!-- <sectoion class="row d-flex flex-column">
-            <div class="col d-flex flex-row justify-content-around">
-        
-            
-                <div class="">
-                    <button type="submit"> Family</button>
-                </div>
-                <div>
-                    <button type="submit">Restaurants</button>
-                </div>
-                <div>
-                    <button type="submit">Night Out</button>
-                </div>
-                <div>
-                    <button type="submit">Casinos</button>
-                </div>
-                <div>
-                    <button type="submit">Shows</button>
-                </div>
-            </div>
-        </section> -->
-        <section id="posts" class="row d-flex flex-row justify-content-around mb-6 px-3"></section>
 
-        <section id="add-post">
+        <section class="my-3">
+            <button id="share-btn" class="px-2" type="button">Share a Venue</button>
+        </section>
+        
+        <section id="add-venue-holder">
             <div class="row">
                 <form action="" class="p-2 py-4 col-md-8 col-lg-6 add-venue">
+                    <button id="cancel" class="p-0 mr-3 btn-cancel" type="button"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
                     <h3>Add a Venue</h3>
+                    
                     <div class="form-group col">
                         <input type="text" id="venue-name" placeholder="Venue Name" class="form-control" />
                     </div>
@@ -66,28 +62,33 @@
                         <input type="text" id="venue-type" placeholder="Type of Venue" class="form-control" />
                     </div>
                     <div class="form-group col">
-                        <input type="text" id="venue-details" placeholder="Tell us about your experience" class="form-control"/>
+                        <input type="text" id="venue-details" placeholder="Tell us about your experience"
+                            class="form-control" />
                     </div>
                     <div class="form-group col">
                         <input type="url" id="venue-image" placeholder="Image URL https://example.com" class="form-control" />
                     </div>
                     <div class="form-group col">
-                        <input type="url" id="venue-website" placeholder="Website URL https://example.com" class="form-control" />
+                        <input type="url" id="venue-website" placeholder="Website URL https://example.com"
+                            class="form-control" />
                     </div>
                     <!-- <div class="form-group col">
-                        <input type="text" id="venue-regrets" placeholder="Something outrageous you did" class="form-control" />
-                    </div> -->
+                                <input type="text" id="venue-regrets" placeholder="Something outrageous you did" class="form-control" />
+                            </div> -->
                     <button id="add-button" type="submit" class="px-2"> Add Venue</button>
                 </form>
             </div>
         </section>
+
+        <section id="posts" class="row d-flex flex-row justify-content-around mb-6 px-3"></section>
+        
     
     </div>
     <!-- <section class="dreams-list"></section> -->
 
     <!-- install axios from node modules -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src="/locations.js"></script>
+    <script src="/venues.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

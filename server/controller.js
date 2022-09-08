@@ -18,8 +18,10 @@ let locationID = locations.length+1;
 
 
 module.exports = {
+    // get all venues and order them by id
     getVenues: (req, res) => {
-        sequelize.query(`SELECT * FROM venues;`)
+        sequelize.query(`SELECT * FROM venues
+        ORDER BY venue_id ASC;`)
         .then(dbRes => {
             res.status(200).send(dbRes[0]);
         }).catch(err => {
@@ -33,7 +35,7 @@ module.exports = {
         const {venue_name, type, details, image_url, website_url, likes} = req.body;
         console.log(req.body);
 
-        sequelize.query(` INSERT INTO venues (venue_name, type, details, image_url, website_url, likes) 
+        sequelize.query(` INSERT INTO venues (venue_name, type, details, image_url, website_url, likes)
             VALUES ('${venue_name}', '${type}', '${details}', '${image_url}', '${website_url}', ${likes});`) 
             .then(dbRes => {
                 console.log (`${venue_name} added to DB`);
@@ -66,18 +68,20 @@ module.exports = {
             res.sendStatus(500);
         });
 
-    }
+    },
 
-    //add function to get comments based on venue
-    // getComment: (req, res) => {
-    //     sequelize.query(`SELECT * FROM comments;`)
-    //     const {venue_id} = req.params;
-    //     let author = req.body.author;
-    //     let {id} = req.params;
-    //     id = Number(id); 
-    //     console.log(id);
-    
-    // }
+    getComments: (req, res) => {
+        console.log(req.params.id);
+        let venueId = Number(req.params.id);
+        console.log(venueId);
+        sequelize.query(`SELECT * FROM comments WHERE venue_id = ${venueId};`)
+        .then(dbRes => {
+            res.status(200).send(dbRes[0]);
+        }).catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+    }
 
     // add function to add a comment to a venue
 

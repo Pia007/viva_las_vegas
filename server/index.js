@@ -34,7 +34,8 @@ app.post('/seed', seed);
 const {
     getVenues,
     addVenue,
-    likeVenue
+    likeVenue,
+    getComments
 } = require('./controller.js');
 
 
@@ -43,10 +44,7 @@ const {
 app.get('/api/venues', getVenues);
 app.post('/api/venues', addVenue);
 app.put('/api/venues/:id', likeVenue);
-
-
-
-
+app.get('/api/comments/:id', getComments);
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));

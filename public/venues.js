@@ -1,6 +1,11 @@
+// const { addVenue } = require("../server/controller");
 
+const { default: axios } = require("axios");
 
 const venuesDiv = document.querySelector('#posts');
+const shareBtn = document.querySelector('#share-btn');
+const addVenueDiv = document.querySelector('#add-venue-holder');
+const closeBtn = document.querySelector('#cancel');
 
 const form = document.querySelector('form');
 
@@ -15,6 +20,7 @@ const errCallback = (err) => console.log(err.response.data);
 const getAllVenues = () => axios.get(baseURL).then(venuesCallback);
 const createVenue = (body) => axios.post(baseURL, body).then(getAllVenues).catch(errCallback);
 const updateLike = (id, likes) => axios.put(`${baseURL}/${id}`, { likes }).then(getAllVenues).catch(errCallback);
+const getComments = (id) => axios.get(`${baseURL}/${id}/comments`).then(({ data: comments }) => displayComments(comments, id)).catch(errCallback);
 
 
 
@@ -45,6 +51,8 @@ const submitForm = (e) => {
     venueDetails.value = '';
     venueImage.value = '';
     venueWebsite.value = '';
+
+    addVenueDiv.style.display = 'none';
 }
 
 
@@ -59,7 +67,7 @@ function createVenueCard(venue) {
     venueCard.classList.add('m-2');
 
     venueCard.innerHTML = `
-        <h4>${venue.venue_name}</h4>
+        <h4><a href=${venue.website_url} alt=${venue.venue_name}>${venue.venue_name}</a></h4>
         <img class='card-img' alt=${venue.venue_name} src=${venue.image_url} />
         
         <div class='card-body py-2 px-0'>
@@ -68,6 +76,7 @@ function createVenueCard(venue) {
                 <span class='likes-count'>${venue.likes}</span>
             </div>
             <p class='card-text text-left'>${venue.details}</p>
+            
 
         </div>
 
@@ -75,36 +84,8 @@ function createVenueCard(venue) {
 
     venuesDiv.appendChild(venueCard); 
     
-    
-    // const commentsDiv = document.createElement('div');
-    // commentsDiv.classList.add('comments-section');
-
-    // venue.comments.forEach(comment => {
-    //     const commentDiv = document.createElement('div');
-    //     commentDiv.classList.add('comment');
-    //     commentDiv.innerHTML = `
-    //         <p class='my-2 text-left'>${comment.text}</p>
-    //         <p class='my-2 text-right'><em>~${comment.author}<em></span>
-    //     `;
-    //     commentsDiv.appendChild(commentDiv);
-
-    // });
-
-    // venueCard.appendChild(commentsDiv);
 }
 
-//create an array from the class see-comments
-// const commentBtns = document.getElementsByClassName('see-comments');
-
-
-
-
-// function to show comments for specific venues comment
-// const showComments = (e) => {
-
-//     console.log(commentBtns.length)
-//     for ()
-// }
 
 function displayVenues(arr) {
     venuesDiv.innerHTML = '';
@@ -113,15 +94,14 @@ function displayVenues(arr) {
 
 
 function likeVenue(e) {
-    //get the venue id
     let id = e;
     id = parseInt(id);
     console.log(id);
-    //get the venue likes
+
     let likeSpan = document.querySelector('span');
     let likes = parseInt(likeSpan.innerText);
-     likes += 1;
-    //update the venue likes
+    likes += 1;
+
     updateLike(id, likes);
 }
 //     
@@ -140,7 +120,18 @@ function likeVenue(e) {
 // }
     
 
+// show add Venue form
+const showAddForm = (elem) => {
+    addVenueDiv.style.display = 'block';
+}
+
+const closeAddForm = (elem) => {
+    addVenueDiv.style.display = 'none';
+}
+
 form.addEventListener('submit', submitForm);
+shareBtn.addEventListener('click', showAddForm);
+closeBtn.addEventListener('click', closeAddForm);
 
 
 

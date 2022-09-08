@@ -22,11 +22,8 @@ body {
     font-family: 'RaleWay', sans-serif;
     color: #89aadb;
 
-    /* display: flex; */
     text-align: center;
-    /* justify-content: center;
-    align-items: center;
-    flex-direction: column; */
+    overflow-x: hidden;
 }
 header {
     width: 100%;
@@ -60,7 +57,7 @@ div > ul {
 .nav-item {
     /* padding: 10px; */
     margin: 0 10px;
-    border: 2px double #20d693;
+    
     border-radius: 5px;
     box-shadow:  5px 5px 10px #2d3d74,
         -5px -5px 10px #3d539e;
@@ -185,10 +182,6 @@ button:active {
 }
 
 p {
-    /* font-size: 16px;
-    font-weight: bold; */
-    /* color: #20d693; */
-    /* text-shadow: 1px 1px 1px #3d539e; */
     text-align: Left;
 }
 
@@ -200,7 +193,9 @@ p {
     box-shadow: inset 2px 2px 10px #2d3d74,
         -2px -2px 10px #3d539e;
 }
-
+.card-text {
+    text-shadow: none;
+}
 .likes-holder {
     display: flex;
     justify-content: flex-end;
@@ -233,10 +228,50 @@ p {
     border-top: 2px solid #20d693;
 }
 
+#add-venue-holder {
+    display: none;
+}
+
 .add-venue {
     background:rgba(0, 0, 0, 0.8);
     border-radius: 5px;
 }
+.btn-cancel {
+    align-self: flex-end;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    color: rgb(255, 55, 0);
+}
+.btn-cancel:hover,
+.btn-cancel:focus,
+.btn-cancel:active {
+    /* border:none;  */
+    box-shadow: -inset 2px 2px 10px #2d3d74,
+        inset -2px -2px 10px #3d539e;
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+    /* text-shadow: #8db7a7 0px 0px 10px; */
+}
+
+.fa-times-circle {
+    font-size: 30px;
+}
+
+.see-comments {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    /* color: #20d693; */
+    font-size: 1.1em;
+    /* font-weight: bold; */
+    /* text-shadow: 2px 2px 2px #89aadb; */
+}
+
+
 
 
 /* BREAKPOINTS */
@@ -248,6 +283,9 @@ p {
     h2 {
         font-size: 40px;
     }
+    h3 {
+        font-size: 32px;
+    }
 } 
 @media screen and (min-width:768px) {
     h1 {
@@ -255,6 +293,12 @@ p {
     }
     h2 {
         font-size: 48px;
+    }
+    h3 {
+        font-size: 40px;
+    }
+    .nav-item {
+        border: 2px double #20d693;
     }
 } 
 @media screen and (min-width:992px) {
@@ -264,6 +308,9 @@ p {
     h2 {
         font-size: 56px;
     }
+    h3 {
+        font-size: 48px;
+    }
 } 
 @media screen and (min-width:1200px) {
     h1 {
@@ -271,5 +318,8 @@ p {
     }
     h2 {
         font-size: 74px;
+    }
+    h3 {
+        font-size: 56px;
     }
 } 
