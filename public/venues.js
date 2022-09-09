@@ -15,10 +15,6 @@ const venuesCallback = ({ data: venues }) => {
 
 const errCallback = (err) => console.log(err.response.data);
 
-const commentsCallback = ({ data: comments }) => ({ data: comments }) => {
-    displayComments(comments)
-    // console.log(comments);
-};
 
 const getAllVenues = () => axios.get(baseURL).then(venuesCallback);
 const createVenue = (body) => axios.post(baseURL, body).then(getAllVenues).catch(errCallback);
@@ -26,48 +22,38 @@ const updateLike = (id, likes) => axios.put(`${baseURL}/${id}`, { likes }).then(
 
 // comment and id were reversed
 const getVenueComments = (id) => axios.get(`${baseURL}/comments/${id}`).then(res => {
-        for(let i = 0; i < res.data.length; i++) {
-            displayComments(res.data[i].text, id);
-        }});
-    // .catch(errCallback);
+    for(let i = 0; i < res.data.length; i++) {
+        let comments = res.data;
+        
+        console.log(res.data[i]);
+        let comment = res.data[i];
+        console.log(comment.text);
+        console.log(comment.author); 
+        
+    }}).catch(errCallback);
 
 
 
 
-// const createComment = (body) => axios.post(`${baseURL}/${body.venue_id}/comments`, body).then(getAllVenues).catch(errCallback);
+// function createCommentCard(comment) {
+//     const commentCard = document.createElement('div');
+//     commentCard.classList.add('comment-card');
+//     commentCard.innerHTML = `
+//         <h4>${comment.author}</h4>
+//         <p class='card-text text-left'>${comment.text}</p>
+//     `;
+//     return commentCard;
+// }
 
-function createCommentCard(comment) {
-    const commentCard = document.createElement('div');
-    commentCard.classList.add('comment-card');
-    commentCard.innerHTML = `
-        <h4>${comment.author}</h4>
-        <p class='card-text text-left'>${comment.text}</p>
-    `;
-    return commentCard;
-}
+// function displayComments(comment, id) {
+//     const commentsDiv = document.querySelector(`#comments-${id}`);
 
-function displayComments(comment, id) {
-    const commentsDiv = document.querySelector(`#comments-${id}`);
-    commentsDiv.innerHTML = ''; 
+//     commentsDiv.innerHTML = ''; 
     
-    commentsDiv.appendChild(createCommentCard(comment));
-    console.log(comment);
+//     commentsDiv.appendChild(createCommentCard(comment));
+//     console.log(commentsDiv);
     
-}
-
-function addComment(e) {
-    e.preventDefault();
-    const comment = {
-
-    }
-    comment.author = e.target.author.value;
-    comment.text = e.target.text.value;
-    comment.venue_id = e.target.venue_id.value;
-    createComment(comment);
-    e.target.reset();
-}
-
-
+// }
 
 
 //form handlers
@@ -122,14 +108,15 @@ function createVenueCard(venue) {
             </div>
             <p class='card-text text-left'>${venue.details}</p>
             <div id='comments-${venue.venue_id}' class='comments-holder'>
-                <p>${venue.text}</p>
-                <p>${venue.author}</p>
+                <p>${venue.comments}</p>
             </div>
             
         </div>
     `;
-
+    
     venuesDiv.appendChild(venueCard);
+    
+    getVenueComments(venue.venue_id);
 
     
     
@@ -139,31 +126,6 @@ function displayVenues(arr) {
     venuesDiv.innerHTML = '';
     arr.forEach(createVenueCard);
 };
-
-
-// create a comment and add it to the correct venue card
-// function createComment(comment, venueId) {
-//     const venueCard = document.querySelector(`#id-${venueId}`);
-//     const commentDiv = document.createElement('div');
-//     commentDiv.classList.add('comment');
-//     commentDiv.innerHTML = `
-//         <p class='comment-text'>${comment.comment}</p>
-//         <p class='comment-author'>${comment.author}</p>
-//     `;
-//     venueCard.appendChild(commentDiv);
-// }
-
-// get the comment for each venue
-// function displayComments(arr, id) {
-//     const comments = arr.filter(comment => comment.venue_id === id);
-//     return comments.map(comment => {
-//         return `
-//         <div class="comment">
-
-//             <p>${comment.comment}</p>
-//         </div>
-//         `
-// }).join(''); 
 
 function likeVenue(e) {
     let id = e;
@@ -177,37 +139,6 @@ function likeVenue(e) {
     updateLike(id, likes);
 }
 
-
-// function createCommentCard(comment) {
-//     const commentCard = document.createElement('div');
-//     commentCard.classList.add('card');
-//     commentCard.classList.add('col-xs')
-//     commentCard.classList.add('col-md-4');
-//     commentCard.classList.add('col-lg-3');
-
-//     commentCard.classList.add('p-2');
-//     commentCard.classList.add('m-2');
-
-//     commentCard.innerHTML = `
-//         <h4>${comment.author}</h4>
-//         <p class='card-text text-left'>${comment.text}</p>
-//     `;
-
-//     return commentCard;
-// }
-
-// function displayComments(arr, id) {
-//     const venueCard = document.querySelector(`#id-${id}`);
-//     venueCard.innerHTML = '';
-//     arr.forEach(comment => venueCard.appendChild(createCommentCard(comment)));
-// }
-
-// function showComments(id) {
-//     id = parseInt(id);
-//     let commentsDiv = document.querySelector(`#id-${id}`);
-//     commentsDiv.innerHTML = '';
-//     getVenueComments(id);
-// }
 // show add Venue form
 const showAddForm = (elem) => {
     addVenueDiv.style.display = 'block';
@@ -230,4 +161,4 @@ closeBtn.addEventListener('click', closeAddForm);
 
 // load venues on page load
 getAllVenues();
-getVenueComments(3);
+// getVenueComments();
