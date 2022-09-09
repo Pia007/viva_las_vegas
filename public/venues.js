@@ -20,12 +20,34 @@ const getAllVenues = () => axios.get(baseURL).then(venuesCallback);
 const createVenue = (body) => axios.post(baseURL, body).then(getAllVenues).catch(errCallback);
 const updateLike = (id, likes) => axios.put(`${baseURL}/${id}`, { likes }).then(getAllVenues).catch(errCallback);
 
+//get all of the comments then add them to the correct venue
+const getComments = () => axios.get(`${baseURL}/comments/${id}`).then(res => {
+    for(let i = 0; i < res.data.length; i++) {
+        let comments = res.data;
+        console.log(comments);
+        let comment = res.data[i];
+        console.log(comment.text);
+        console.log(comment.author);
+        let venue_id = comment.venue_id;
+        let commentsDiv = document.querySelector(`#comments-${venue_id}`);
+        commentsDiv.innerHTML = `
+            <div class="comments">
+                <h3>Comments</h3>
+                <div class="comment">
+                    <p>${comment.author}</p>
+                    <p>${comment.text}</p>
+                </div>
+            </div>
+        `;
+    }
+}).catch(errCallback);
+
 // comment and id were reversed
 const getVenueComments = (id) => axios.get(`${baseURL}/comments/${id}`).then(res => {
     for(let i = 0; i < res.data.length; i++) {
         let comments = res.data;
         
-        console.log(res.data[i]);
+        console.log(comments);
         let comment = res.data[i];
         console.log(comment.text);
         console.log(comment.author); 
@@ -33,27 +55,25 @@ const getVenueComments = (id) => axios.get(`${baseURL}/comments/${id}`).then(res
     }}).catch(errCallback);
 
 
-
-
-// function createCommentCard(comment) {
-//     const commentCard = document.createElement('div');
-//     commentCard.classList.add('comment-card');
-//     commentCard.innerHTML = `
-//         <h4>${comment.author}</h4>
-//         <p class='card-text text-left'>${comment.text}</p>
+//create a comments for each venue
+// function createComments( id ) {
+//     const commentsDiv = document.createElement('div');
+//     commentsDiv.classList.add('comments-holder');
+//     commentsDiv.id = `comments-${venue.venue_id}`;
+//     commentsDiv.innerHTML = `
+//         <div class="comments">
+//             <h3>Comments</h3>
+//             <div class="comment">
+//                 <p>${comment.author}</p>
+//                 <p>${comment.text}</p>
+//             </div>
+//         </div>
 //     `;
-//     return commentCard;
+//     return commentsDiv;
+//     venuesDiv.appendChild(commentsDiv);
 // }
 
-// function displayComments(comment, id) {
-//     const commentsDiv = document.querySelector(`#comments-${id}`);
 
-//     commentsDiv.innerHTML = ''; 
-    
-//     commentsDiv.appendChild(createCommentCard(comment));
-//     console.log(commentsDiv);
-    
-// }
 
 
 //form handlers
@@ -107,20 +127,21 @@ function createVenueCard(venue) {
                 <span class='likes-count'>${venue.likes}</span>
             </div>
             <p class='card-text text-left'>${venue.details}</p>
+            <button onclick="showComments(${venue.venue_id})" class="px-1 see-comment-btn">See Comments</button>
             <div id='comments-${venue.venue_id}' class='comments-holder'>
-                <p>${venue.comments}</p>
+                <p>${venue.text}</p>
+                <p>${venue.author}</p>
             </div>
             
         </div>
     `;
-    
-    venuesDiv.appendChild(venueCard);
-    
-    getVenueComments(venue.venue_id);
 
     
     
+    venuesDiv.appendChild(venueCard);
 }
+
+
 
 function displayVenues(arr) {
     venuesDiv.innerHTML = '';
@@ -139,6 +160,32 @@ function likeVenue(e) {
     updateLike(id, likes);
 }
 
+
+const commentDivs = document.querySelectorAll('.comments-holder');
+const commentBtns = document.querySelectorAll('.see-comment-btn');
+
+commentDivs.forEach(commentDiv => {
+    //add the venue id to the div
+    commentDiv.id = `comments-${venue.venue_id}`;
+    commentDiv.style.display = 'none';
+});
+
+// write a function that shows the comment div when the button is clicked
+
+function showComments(e) {
+    let id = e;
+    id = parseInt(id);
+    console.log(id);
+
+    let commentDiv = document.querySelector(`#comments-${id}`);
+    commentDiv.style.display = 'block';
+}
+
+// add event listeners to each comments button
+commentBtns.forEach(commentBtn => {
+    commentBtn.addEventListener('click', showComments);
+});
+
 // show add Venue form
 const showAddForm = (elem) => {
     addVenueDiv.style.display = 'block';
@@ -153,12 +200,8 @@ shareBtn.addEventListener('click', showAddForm);
 closeBtn.addEventListener('click', closeAddForm);
 
 
-// <button onclick="showComments(${venue.venue_id})" class="px-1 like-btn">See Comments</button>
-            // <div class='comments-holder'>
-            //     <p>${comment.text}</p>
-            //     <p>${comment.author}</p>
-            // </div>
+
 
 // load venues on page load
 getAllVenues();
-// getVenueComments();
+// getComments();

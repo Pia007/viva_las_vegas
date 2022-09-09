@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 app.post('/seed', seed);
 
 const {
-    getVenues,
+    // getVenues,
     // getCommentsAndVenues,
     addVenue,
     likeVenue,
@@ -45,10 +45,10 @@ const {
 
 
 // app.get('/api/venues', getCommentsAndVenues);
-app.get('/api/venues', getVenues);
+app.get('/api/venues', getComments);
 app.post('/api/venues', addVenue);
 app.put('/api/venues/:id', likeVenue);
-app.get('/api/venues/comments/:id', getComments);
+// app.get('/api/venues/comments/:id', getComments);
 // app.get('/api/commentsandvenues/', getCommentsAndVenues);
 
 
