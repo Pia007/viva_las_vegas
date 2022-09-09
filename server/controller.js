@@ -70,18 +70,50 @@ module.exports = {
 
     },
 
+    // write a function to get comments for a specific venue 
     getComments: (req, res) => {
         console.log(req.params.id);
         let venueId = Number(req.params.id);
         console.log(venueId);
         sequelize.query(`SELECT * FROM comments WHERE venue_id = ${venueId};`)
         .then(dbRes => {
+            console.log(dbRes[0]);
             res.status(200).send(dbRes[0]);
         }).catch(err => {
             console.log(err);
             res.sendStatus(500);
         });
-    }
+    },
+
+
+    //write a function to join the comments table with the venues table and return the comments for a specific venue
+
+    // getCommentsAndVenues: (req, res) => {
+    //     console.log(req.params.id);
+    //     let venueId = Number(req.params.id);
+    //     console.log(venueId);
+    //     sequelize.query(`SELECT * FROM comments JOIN venues ON comments.venue_id = venues.venue_id`)
+    //     .then(dbRes => {
+    //         console.log(dbRes[0]);
+    //         res.status(200).send(dbRes[0]);
+    //     }).catch(err => {
+    //         console.log(err);
+    //         res.sendStatus(500);
+    //     });
+    // }
+
+    // getComments: (req, res) => {
+    //     console.log(req.params.id);
+    //     let venueId = Number(req.params.id);
+    //     console.log(venueId);
+    //     sequelize.query(`SELECT * FROM comments WHERE venue_id = ${venueId};`)
+    //     .then(dbRes => {
+    //         res.status(200).send(dbRes[0]);
+    //     }).catch(err => {
+    //         console.log(err);
+    //         res.sendStatus(500);
+    //     });
+    // }
 
     // add function to add a comment to a venue
 

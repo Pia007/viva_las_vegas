@@ -33,18 +33,23 @@ app.post('/seed', seed);
 
 const {
     getVenues,
+    // getCommentsAndVenues,
     addVenue,
     likeVenue,
     getComments
+    
+    
 } = require('./controller.js');
 
 
 
 
+// app.get('/api/venues', getCommentsAndVenues);
 app.get('/api/venues', getVenues);
 app.post('/api/venues', addVenue);
 app.put('/api/venues/:id', likeVenue);
-app.get('/api/comments/:id', getComments);
+app.get('/api/venues/comments/:id', getComments);
+// app.get('/api/commentsandvenues/', getCommentsAndVenues);
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
