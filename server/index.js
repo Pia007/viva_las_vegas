@@ -32,24 +32,21 @@ app.get('/', (req, res) => {
 app.post('/seed', seed);
 
 const {
-    // getVenues,
-    // getCommentsAndVenues,
+    getVenues,
     addVenue,
     likeVenue,
-    getComments
+    getComments,
+    getVenueComments
     
     
 } = require('./controller.js');
 
 
-
-
-// app.get('/api/venues', getCommentsAndVenues);
-app.get('/api/venues', getComments);
+app.get('/api/venues', getVenues);
 app.post('/api/venues', addVenue);
 app.put('/api/venues/:id', likeVenue);
-// app.get('/api/venues/comments/:id', getComments);
-// app.get('/api/commentsandvenues/', getCommentsAndVenues);
+app.get('/api/comments/', getComments);
+app.get('/api/comments/:id', getVenueComments);
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
