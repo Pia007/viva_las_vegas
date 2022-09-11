@@ -38,20 +38,32 @@ const getComments = () => axios.get(`${baseURL}/comments`).then(commentsCallback
 const getVenueComments = (id) => axios.get(`${baseURL}/comments/${id}`).then(commentsCallback).catch(errCallback);
 
 const getTheComments =() => {
+    
     axios.get(`${baseURL}/comments`).then(res => {
         //get all of the venue ids and display them 
-        let venues = res.data;
+        const venues = res.data;
         console.log(venues);
+    
+    }).catch(err => console.log(err));
 
-        venues.forEach(venue => {});
+        const myVenues = venues;
+        console.log('My venues', myVenues);
+
+
+        // venues.forEach(venue => {
         for (let i = 0; i < venues.length; i++) {
-            let venueId = venues[i].venue_id;
+            let venueId = 3;
             console.log('Venue id ', venueId);
             //get the comments for each venue
             axios.get(`${baseURL}/comments/${venueId}`).then(res => {
-                console.log(res.data);
                 let comments = res.data;
-                //create a div for each comment
+                for (let i = 0; i < comments.length; i++) {
+                    let commentArr =[];
+                    if(venueId === comments[i].venue_id) {
+                        console.log(match);
+                    }
+                }
+                
                 for (let i = 0; i < comments.length; i++) {
                     let commentDiv = document.createElement('div');
                     commentDiv.classList.add('comment');
@@ -61,12 +73,10 @@ const getTheComments =() => {
                         <p>${comments[i].commenter}</p>
                         <p>${comments[i].date}</p>
                     `;
-                    commentBox.appendChild(commentDiv);
-                }
+                };
             });
-        }
-    });
-}
+        };
+    }     
 //         console.log('the data ', res.data);
 
 //         let id = 3;
@@ -108,30 +118,12 @@ const submitForm = (e) => {
     addVenueDiv.style.display = 'none';
 }
 
-venueComment = (id) => {
-        id = 3;
-        axios.get(`${baseURL}/comments/${id}`).then(res => {
-            console.log('This is the venue id: ' ,id);
-            console.log(res.data);
-            // displayComments(data.data);
-        }).catch(err => console.log(err));
-    }
 
 function createVenueCard(venue, comment) {
     
     console.log(`Venue ${venue.venue_id}`);
     let id = venue.venue_id;
-    console.log('This is the venue id: ' ,id);
-    // getVenueComments(id);
-
-    venueComment = (id) => {
-        id = 3;
-        axios.get(`${baseURL}/comments/${id}`).then(res => {
-            console.log('This is the venue id: ' ,id);
-            console.log(res.data);
-            // displayComments(data.data);
-        }).catch(err => console.log(err));
-    }
+    // console.log('This is the venue id: ' ,id);
 
     const venueCard = document.createElement('div');
     // give the venue card the id of the venue id
@@ -170,13 +162,10 @@ function createVenueCard(venue, comment) {
     `;
 
 
-    
-    
-    
     venuesDiv.appendChild(venueCard);
     // venueCard.append(commentCard);
-    return venueCard;
-    venueComment(venue.venue_id);
+    // return venueCard;
+    // venueComment(venue.venue_id);
 }
 
 
