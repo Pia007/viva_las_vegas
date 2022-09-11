@@ -107,16 +107,41 @@ h3 {
     text-align: center;
     /* text-shadow: 2px 2px 2px #89aadb; */
 }
-
-section > div {
-    margin: 30px 0;
-    display: flex;
+.dashboard {
+    border: 2px solid black;
     justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    /* padding: 10px; */
+
+}
+.admin-venues {
+    /* margin: 30px 0; */
+    display: flex;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
+    background: rgba(0, 0, 0, 0.8);
 
-    padding: 20px;
+    /* padding: 20px; */
 }
+.venue-item {
+    border-top: 1px solid white;
+}
+.venue-item:first-child {
+    border-top: none;
+}
+.delete-btn {
+    background: #d45454;
+    color: white;
+    border: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+    font-size: 14px;
+    box-shadow:none;
+}
+
 form {
     width: 100%;
     display: flex;
@@ -187,7 +212,7 @@ p {
 
 
 .card {
-    background: rgba(0, 0, 0, 0.8);
+    background: transparent;
 }
 .card-img {
     box-shadow: inset 2px 2px 10px #2d3d74,
@@ -196,7 +221,7 @@ p {
 .card-text {
     text-shadow: none;
 }
-.likes-holder {
+/* .likes-holder {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -204,14 +229,8 @@ p {
     padding: 0 5px;
     background-color: none;
     
-}
+} */
 
-.like-btn {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-}
 
 .fa-heart {
     color: #d45454;
@@ -281,9 +300,12 @@ p {
     text-align: right;
 }
 
-.admin-venues {
+/* .admin-venues {
     margin: 0;
-}
+    
+    margin: 0;
+    padding: 0;
+} */
 
 
 /* BREAKPOINTS */

@@ -1,12 +1,11 @@
 
-
-
 const venuesDiv = document.querySelector('#posts');
-const commentBox = document.querySelector('#comments');
 
 const shareBtn = document.querySelector('#share-btn');
 const addVenueDiv = document.querySelector('#add-venue-holder');
 const closeBtn = document.querySelector('#cancel');
+// const commentDivs = document.querySelectorAll('.comments-holder');
+
 // const commentsDiv = document.createElement('#comments');
 
 const form = document.querySelector('form');
@@ -37,99 +36,51 @@ const getComments = () => axios.get(`${baseURL}/comments`).then(commentsCallback
 // get comments based on venue id
 const getVenueComments = (id) => axios.get(`${baseURL}/comments/${id}`).then(commentsCallback).catch(errCallback);
 
-const getTheComments =() => {
-    
-    axios.get(`${baseURL}/comments`).then(res => {
-        //get all of the venue ids and display them 
-        const venues = res.data;
-        console.log(venues);
-    
-    }).catch(err => console.log(err));
-
-        const myVenues = venues;
-        console.log('My venues', myVenues);
-
-
-        // venues.forEach(venue => {
-        for (let i = 0; i < venues.length; i++) {
-            let venueId = 3;
-            console.log('Venue id ', venueId);
-            //get the comments for each venue
-            axios.get(`${baseURL}/comments/${venueId}`).then(res => {
-                let comments = res.data;
-                for (let i = 0; i < comments.length; i++) {
-                    let commentArr =[];
-                    if(venueId === comments[i].venue_id) {
-                        console.log(match);
-                    }
-                }
-                
-                for (let i = 0; i < comments.length; i++) {
-                    let commentDiv = document.createElement('div');
-                    commentDiv.classList.add('comment');
-                    commentDiv.innerHTML = `
-
-                        <p>${comments[i].comment}</p>
-                        <p>${comments[i].commenter}</p>
-                        <p>${comments[i].date}</p>
-                    `;
-                };
-            });
-        };
-    }     
-//         console.log('the data ', res.data);
-
-//         let id = 3;
-//         axios.get(`${baseURL}/comments/${3}`).then(res => {
-//             console.log('This is the venue id: ' ,id);
-//             console.log(res.data);
-//         })
-//     }).catch(err => console.log(err));
-// }
 
 
 //form handlers
 const submitForm = (e) => {
     e.preventDefault();
 
+    
     let venueType = document.querySelector('#venue-type');
     let venueName = document.querySelector('#venue-name');
+    let venueAuthor = document.querySelector('#venue-author');
     let venueDetails = document.querySelector('#venue-details');
     let venueImage = document.querySelector('#venue-image'); 
     let venueWebsite = document.querySelector('#venue-website'); 
+    
 
     let newVenueObj = {
         venue_name: venueName.value,
         type: venueType.value,
         details: venueDetails.value,
+        author: venueAuthor.value,
         image_url: venueImage.value,
         website_url: venueWebsite.value,
         likes: 0
     };
+    console.log(newVenueObj);
 
     createVenue(newVenueObj);
-
-    venueType.value = '';
     venueName.value = '';
+    venueType.value = '';
     venueDetails.value = '';
+    venueAuthor.value = '';
     venueImage.value = '';
     venueWebsite.value = '';
-
+    
+    
     addVenueDiv.style.display = 'none';
 }
 
 
-function createVenueCard(venue, comment) {
+function createVenueCard(venue) {
     
     console.log(`Venue ${venue.venue_id}`);
     let id = venue.venue_id;
-    // console.log('This is the venue id: ' ,id);
 
     const venueCard = document.createElement('div');
-    // give the venue card the id of the venue id
-    
-    //  = venue_id;
-    // console.log(comment-id);
     
     venueCard.classList.add('card');
     venueCard.classList.add('col-xs')
@@ -149,23 +100,14 @@ function createVenueCard(venue, comment) {
                 <span class='likes-count'>${venue.likes}</span>
             </div>
             <p class='card-text text-left'>${venue.details}</p>
-
-            <button onclick="showComments(${venue.venue_id})" class="px-1 see-comment-btn">See Comments</button>
+            <p class='mb-1 mr-0 author'> - ${venue.author}</p>
             
-            
-            
-            <div id='comments-${venue.venue_id}' class='comments-holder'>
-                ${comment.text}
-            </div>
             
         </div>
     `;
 
 
     venuesDiv.appendChild(venueCard);
-    // venueCard.append(commentCard);
-    // return venueCard;
-    // venueComment(venue.venue_id);
 }
 
 
@@ -177,47 +119,9 @@ function displayVenues(arr) {
 
 
 // create comments of each venue
-function createCommentCard(comment) {
 
-    const commentCard = document.createElement('div');
-    commentCard.classList.add('comment');
-    commentCard.classList.add('col-xs')
-    commentCard.classList.add('col-md-4');
-    commentCard.classList.add('col-lg-3');
 
-    commentCard.classList.add('p-2');
-    commentCard.classList.add('m-2');
 
-    commentCard.innerHTML = `
-        <p>${comment.author}</p>
-        <p>${comment.text}</p>
-    `;
-
-    commentBox.appendChild(commentCard);
-
-    return commentCard;
-    
-}
-
-const commentDivs = document.querySelectorAll('.comments-holder');
-const commentBtns = document.querySelectorAll('.see-comment-btn');
-
-commentDivs.forEach(commentDiv => {
-    commentDiv.id = `comments-${venue.venue_id}`;
-    commentDiv.innerHTML = '';
-    commentDiv.innerHTML = `
-        <p>${comment.text}</p>
-        <p>${comment.author}</p>
-        
-        `;
-    commentDiv.style.display = 'none';
-});
-
-// display comments of each venue
-function displayComments(arr) {
-    commentBox.innerHTML = '';
-    arr.forEach(createCommentCard);
-};
 
 function likeVenue(e) {
     let id = e;
@@ -231,22 +135,25 @@ function likeVenue(e) {
     updateLike(id, likes);
 }
 
+const commentBtns = document.querySelectorAll('.see-comment-btn');
+const commentHolders = document.querySelectorAll('.comments-holder');
 
-function showComments(e) {
-    let id = e;
-    id = parseInt(id);
-    console.log(id);
+// commentHolders.forEach(holder => {
+//     holder.style.display = 'none';
+// });
 
-    getVenueComments(id);
-
-    let commentDiv = document.querySelector(`#comments-${id}`);
-    console.log(commentDiv);
+// function showComments(e) {
+//     let id = e;
+//     id = parseInt(id);
+//     console.log(id);
+//     commentHolder = document.querySelector(`#comments-${id}`);
     
-    
+//     commentHolder.style.display === 'block' ? commentHolder.style.display = 'none' : commentHolder.style.display = 'block';
 
-    commentDiv.style.display = commentDiv.style.display === 'none' ? 'block' : 'none';
-    return commentDiv;
-}
+//     commentBtn = document.querySelector(`#comments-${id}-button`);
+//     commentBtn.innerHTML === 'See Comments' ? commentBtn.innerHTML = 'Hide Comments' : commentBtn.innerHTML = 'See Comments';
+
+// }
 
 //add event listeners to each comments button
 
@@ -262,15 +169,16 @@ const closeAddForm = (elem) => {
 
 form.addEventListener('submit', submitForm);
 shareBtn.addEventListener('click', showAddForm);
-closeBtn.addEventListener('click', closeAddForm);commentBtns.forEach(commentBtn => {
-    commentBtn.addEventListener('click', showComments);
-});
+closeBtn.addEventListener('click', closeAddForm);
+// commentBtns.forEach(commentBtn => {
+//     commentBtn.addEventListener('click', showComments);
+// });
 
 
 
 
 // load venues on page load
 getAllVenues();
-getComments();
+// getComments();
 // getVenueComments();
-getTheComments();
+// getTheComments();

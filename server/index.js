@@ -34,19 +34,32 @@ app.post('/seed', seed);
 const {
     getVenues,
     addVenue,
-    likeVenue,
-    getComments,
-    getVenueComments
-    
-    
-} = require('./controller.js');
+    likeVenue  
+} = require('./controllers.js/general.js');
+
+const {
+    getAdminVenues,
+    getAdminVenuesLikes,
+    deleteVenue,
+    getAdminFeedback,
+    createFeedback,
+    updateFeedback
+
+} = require('./controllers.js/admin.js');
 
 
 app.get('/api/venues', getVenues);
 app.post('/api/venues', addVenue);
 app.put('/api/venues/:id', likeVenue);
-app.get('/api/comments/', getComments);
-app.get('/api/comments/:id', getVenueComments);
+
+app.get('/api/venues', getAdminVenues);
+app.get('/api/admin/likes', getAdminVenuesLikes);
+app.delete('/api/admin/venues/:id', deleteVenue);
+app.get('/api/feedbacks', getAdminFeedback);
+app.post('/api/feedbacks', createFeedback);
+app.put('/api/feedbacks/:id', updateFeedback);
+
+// app.get('/api/comments/:id', getVenueComments);
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
