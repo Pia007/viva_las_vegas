@@ -55,9 +55,9 @@ module.exports = {
     },
     // write a function that list feed back based on date created
     getAdminFeedback: (req, res) => {
-        sequelize.query(`SELECT created_at AT TIME ZONE 'UTC' AT TIME ZONE 'PST', feedback
+        sequelize.query(`SELECT created_at AT TIME ZONE 'UTC' AT TIME ZONE 'PST', feedback_id, feedback, resolved
         FROM feedbacks
-        ORDER BY created_at DESC;`)
+        ORDER BY feedback_id ASC;`)
         .then(dbRes => {
             console.log(dbRes[0]);
             res.status(200).send(dbRes[0]);
@@ -70,7 +70,7 @@ module.exports = {
     createFeedback: (req, res) => {
         const {feedback, resolved} = req.body;
         console.log(req.body);
-        sequelize.query(`INSERT INTO feedbacks (author, text) VALUES ('${feedback}', false);`)
+        sequelize.query(`INSERT INTO feedbacks (feedback, resolved ) VALUES ('${feedback}', false);`)
         .then(dbRes => {
             console.log(dbRes[0]);
             res.status(200).send(dbRes[0]);
@@ -82,9 +82,11 @@ module.exports = {
 
     // write a function to update the feedback to resolved
     updateFeedback: (req, res) => {
-        const {feedback_id} = req.params;
-        console.log(req.params);
-        sequelize.query(`UPDATE feedbacks SET resolved = true WHERE feedback_id = ${feedback_id};`)
+        let {feedbackId} = req.params.id;
+        feedbackId = Number(req.params.id);
+        console.log(feedbackId);
+        
+        sequelize.query(`UPDATE feedbacks SET resolved = true WHERE feedback_id = ${feedbackId};`)
         .then(dbRes => {
             console.log(dbRes[0]);
             res.status(200).send(dbRes[0]);

@@ -100,7 +100,7 @@ function createVenueCard(venue) {
                 <span class='likes-count'>${venue.likes}</span>
             </div>
             <p class='card-text text-left'>${venue.details}</p>
-            <p class='mb-1 mr-0 author'> - ${venue.author}</p>
+            <p class='mb-1 mr-0 author'><em> - ${venue.author}</em></p>
             
             
         </div>
@@ -111,16 +111,10 @@ function createVenueCard(venue) {
 }
 
 
-
 function displayVenues(arr) {
     venuesDiv.innerHTML = '';
     arr.forEach(createVenueCard);
 };
-
-
-// create comments of each venue
-
-
 
 
 function likeVenue(e) {
@@ -135,30 +129,7 @@ function likeVenue(e) {
     updateLike(id, likes);
 }
 
-const commentBtns = document.querySelectorAll('.see-comment-btn');
-const commentHolders = document.querySelectorAll('.comments-holder');
 
-// commentHolders.forEach(holder => {
-//     holder.style.display = 'none';
-// });
-
-// function showComments(e) {
-//     let id = e;
-//     id = parseInt(id);
-//     console.log(id);
-//     commentHolder = document.querySelector(`#comments-${id}`);
-    
-//     commentHolder.style.display === 'block' ? commentHolder.style.display = 'none' : commentHolder.style.display = 'block';
-
-//     commentBtn = document.querySelector(`#comments-${id}-button`);
-//     commentBtn.innerHTML === 'See Comments' ? commentBtn.innerHTML = 'Hide Comments' : commentBtn.innerHTML = 'See Comments';
-
-// }
-
-//add event listeners to each comments button
-
-
-// show add Venue form
 const showAddForm = (elem) => {
     addVenueDiv.style.display = 'block';
 }
@@ -170,15 +141,6 @@ const closeAddForm = (elem) => {
 form.addEventListener('submit', submitForm);
 shareBtn.addEventListener('click', showAddForm);
 closeBtn.addEventListener('click', closeAddForm);
-// commentBtns.forEach(commentBtn => {
-//     commentBtn.addEventListener('click', showComments);
-// });
 
 
-
-
-// load venues on page load
 getAllVenues();
-// getComments();
-// getVenueComments();
-// getTheComments();

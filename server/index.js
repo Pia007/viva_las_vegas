@@ -55,9 +55,9 @@ app.put('/api/venues/:id', likeVenue);
 app.get('/api/venues', getAdminVenues);
 app.get('/api/admin/likes', getAdminVenuesLikes);
 app.delete('/api/admin/venues/:id', deleteVenue);
-app.get('/api/feedbacks', getAdminFeedback);
+app.get('/api/admin/feedbacks', getAdminFeedback);
 app.post('/api/feedbacks', createFeedback);
-app.put('/api/feedbacks/:id', updateFeedback);
+app.put('/api/admin/feedbacks/:id', updateFeedback);
 
 // app.get('/api/comments/:id', getVenueComments);
 

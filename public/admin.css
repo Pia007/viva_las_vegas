@@ -105,9 +105,10 @@ h3 {
     margin: 0;
     margin-bottom: 15px;
     text-align: center;
-    /* text-shadow: 2px 2px 2px #89aadb; */
+    text-shadow: 5px 5px 3px #3d539e;
 }
 .dashboard {
+    display: none;
     border: 2px solid black;
     justify-content: center;
     background: rgba(0, 0, 0, 0.8);
@@ -125,10 +126,12 @@ h3 {
 
     /* padding: 20px; */
 }
-.venue-item {
+.venue-item,
+.feedback-item {
     border-top: 1px solid white;
 }
-.venue-item:first-child {
+.venue-item:first-child,
+.feedback-item:first-child {
     border-top: none;
 }
 .delete-btn {
