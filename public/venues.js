@@ -1,19 +1,12 @@
-
 const venuesDiv = document.querySelector('#posts');
-
 const shareBtn = document.querySelector('#share-btn');
 const addVenueDiv = document.querySelector('#add-venue-holder');
 const closeBtn = document.querySelector('#cancel');
-// const commentDivs = document.querySelectorAll('.comments-holder');
-
-// const commentsDiv = document.createElement('#comments');
 
 const form = document.querySelector('form');
 
-// the base url includes the venue endpoint this has to be different for comments
 const baseURL = `http://localhost:9007/api`
 
-// create a c
 const venuesCallback = ({ data: venues }) => {
     displayVenues(venues);
     console.log(venues);
@@ -31,9 +24,7 @@ const getAllVenues = () => axios.get(`${baseURL}/venues`).then(venuesCallback);
 const createVenue = (body) => axios.post(`${baseURL}/venues`, body).then(getAllVenues).catch(errCallback);
 const updateLike = (id, likes) => axios.put(`${baseURL}/venues/${id}`, { likes }).then(getAllVenues).catch(errCallback);
 
-//get all of the comments then add them to the correct venue
 const getComments = () => axios.get(`${baseURL}/comments`).then(commentsCallback);
-// get comments based on venue id
 const getVenueComments = (id) => axios.get(`${baseURL}/comments/${id}`).then(commentsCallback).catch(errCallback);
 
 

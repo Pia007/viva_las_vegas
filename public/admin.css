@@ -94,12 +94,6 @@ section {
     margin: auto;
 }
 
-/* h1 { */
-    /* margin: 0; */
-    /* margin-bottom: 30px; */
-    /* text-shadow: 2px 2px 2px #89aadb; */
-    /* font-size: 1.5em; */
-/* } */
 h2,
 h3 {
     margin: 0;
@@ -224,31 +218,6 @@ p {
 .card-text {
     text-shadow: none;
 }
-/* .likes-holder {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-direction: row;
-    padding: 0 5px;
-    background-color: none;
-    
-} */
-
-
-.fa-heart {
-    color: #d45454;
-    padding-top: 5px;
-    font-size: 20px;
-    margin: 0;
-}
-.likes-count {
-    margin-top: 0px;
-}
-
-.comments-section {
-    width: 100%;
-    border-top: 2px solid #20d693;
-}
 
 #add-venue-holder {
     display: none;
@@ -284,18 +253,12 @@ p {
 }
 
 .see-comment-btn {
-    /* background: transparent;
-    border: none;
-    box-shadow: none; */
-    /* color: #20d693; */
+    
     font-size: 14px;
     justify-self: end;
-    /* font-weight: bold; */
-    /* text-shadow: 2px 2px 2px #89aadb; */
 }
 .comments-holder {
     display: none;
-    /* display: flex; */
     flex-direction: column;
 }
 .author {
@@ -303,12 +266,6 @@ p {
     text-align: right;
 }
 
-/* .admin-venues {
-    margin: 0;
-    
-    margin: 0;
-    padding: 0;
-} */
 
 
 /* BREAKPOINTS */

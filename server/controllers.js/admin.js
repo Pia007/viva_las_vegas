@@ -15,7 +15,6 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 
 
 module.exports = {
-    //write a function that will list our all of the venues based on created date (most recent first) in pst time zome
     getAdminVenues: (req, res) => {
         sequelize.query(`SELECT venue_id, venue_name, likes 
         FROM venues
@@ -28,8 +27,6 @@ module.exports = {
             res.sendStatus(500);
         });
     },
-
-    // write a function that will list the venues based on most likes
     getAdminVenuesLikes: (req, res) => {
         sequelize.query(`SELECT * FROM venues ORDER BY likes DESC`)
         .then(dbRes => {
@@ -53,7 +50,7 @@ module.exports = {
             res.sendStatus(500);
         });
     },
-    // write a function that list feed back based on date created
+    // list feed back based on date created
     getAdminFeedback: (req, res) => {
         sequelize.query(`SELECT created_at AT TIME ZONE 'UTC' AT TIME ZONE 'PST', feedback_id, feedback, resolved
         FROM feedbacks
@@ -66,7 +63,7 @@ module.exports = {
             res.sendStatus(500);    
         });
     },
-    //write a function that will allow users to send feedback to the admin
+    // send feedback to the admin
     createFeedback: (req, res) => {
         const {feedback, resolved} = req.body;
         console.log(req.body);
@@ -80,7 +77,7 @@ module.exports = {
         });
     },
 
-    // write a function to update the feedback to resolved
+    // update the feedback to resolved
     updateFeedback: (req, res) => {
         let {feedbackId} = req.params.id;
         feedbackId = Number(req.params.id);

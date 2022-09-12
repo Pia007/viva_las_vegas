@@ -2,9 +2,6 @@ require("dotenv").config();
 
 // configure server to use dotenv
 const path = require('path');
-// require('dotenv').config({path: path.join(__dirname, '../.env')});
-
-
 
 const express = require('express');
 const cors = require('cors');
@@ -47,6 +44,20 @@ const {
 
 } = require('./controllers.js/admin.js');
 
+const {
+    registerAdmin,
+    loginAdmin
+} = require('./controllers.js/auth.js');
+
+//write a middleware to check if admin is logged in
+// const checkAdmin = (req, res, next) => {
+    
+//     if(req.admin) {
+//         next();
+//     } else {
+//         res.status(401).send('You are not logged in');
+//     }
+// }
 
 app.get('/api/venues', getVenues);
 app.post('/api/venues', addVenue);
@@ -56,10 +67,13 @@ app.get('/api/venues', getAdminVenues);
 app.get('/api/admin/likes', getAdminVenuesLikes);
 app.delete('/api/admin/venues/:id', deleteVenue);
 app.get('/api/admin/feedbacks', getAdminFeedback);
+
+
 app.post('/api/feedbacks', createFeedback);
 app.put('/api/admin/feedbacks/:id', updateFeedback);
 
-// app.get('/api/comments/:id', getVenueComments);
+app.post('/api/admin/register', registerAdmin);
+app.post('/api/admin/login', loginAdmin);
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));

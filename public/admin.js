@@ -1,11 +1,6 @@
 const dashboard = document.querySelector('#admin-dash');
 const venueHolder = document.querySelector('#venue-holder');
-
-
 const feedDash = document.getElementById('feedback-dash');
-
-
-
 
 const baseURL = `http://localhost:9007/api`;
 
@@ -24,9 +19,6 @@ const feedbackCallback = ({ data: feedbacks }) => {
 const errCallBack = (err) => console.log(err.response.data)
 
 const getFeedbacks = () => axios.get(`${baseURL}/admin/feedbacks`).then(feedbackCallback);
-// const errCallback = (err) => console.log(err.response.data);
-
-
 
 const getAdminVenues = () => axios.get(`${baseURL}/venues`).then(adminVenuesCallback);
 const deleteVenue = (id) => axios.delete(`${baseURL}/admin/venues/${id}`).then(getAdminVenues).catch(errCallback);
@@ -44,9 +36,6 @@ function createAdminView(venue) {
 
     const venueItem = document.createElement('div');
     
-    //  = venue_id;
-    // console.log(comment-id);
-    
     venueItem.classList.add('venue-item');
     venueItem.classList.add('col-xs')
     venueItem.classList.add('col-md-4');
@@ -54,9 +43,6 @@ function createAdminView(venue) {
     venueItem.classList.add('p-2');
     venueItem.classList.add('m-auto');
     venueItem.classList.add('bg-none');
-
-    // venuesList.classList.add('p-2');
-    // venuesList.classList.add('m-2');
 
     venueItem.innerHTML = `
         
@@ -79,7 +65,6 @@ function createAdminView(venue) {
 }
 
 
-
 function displayAdminVenues(arr) {
     dashboard.innerHTML = '';
     arr.forEach(createAdminView);
@@ -88,20 +73,15 @@ function displayAdminVenues(arr) {
 const deleteBtns = document.querySelectorAll('.delete-btn');
 
 
-//function to delete venue
 function adminDeleteVenue(e) {
     let id = e;
     id= parseInt(id);
     console.log(`Delete venue ${id}`);
     deleteBtn = document.querySelector(`#venue-${id}`);
-    // get the venue id from the button
     
-
     console.log(id);
     
-
     deleteVenue(id);
-    
 }
 
 
@@ -122,9 +102,6 @@ function createFeedback(feedback) {
 
     const feedbackItem = document.createElement('div');
     
-    //  = feedback_id;
-    // console.log(comment-id);
-    
     feedbackItem.classList.add('feedback-item');
     feedbackItem.classList.add('col-xs')
     feedbackItem.classList.add('col-md-4');
@@ -132,9 +109,6 @@ function createFeedback(feedback) {
     feedbackItem.classList.add('p-2');
     feedbackItem.classList.add('m-auto');
     feedbackItem.classList.add('bg-none');
-
-    // feedbacksList.classList.add('p-2');
-    // feedbacksList.classList.add('m-2');
 
     feedbackItem.innerHTML = `
         
@@ -147,16 +121,12 @@ function createFeedback(feedback) {
                 <button id='feedbacks-${feedback.feedback_id}' onclick='adminFeedBackUpdate(${feedback.feedback_id})' type="button" class="px-2 m-0 resolve-btn">RESOLVE</button>
             </div>
         </div>
-        
-        
-        
     `;
 
     feedbackList.appendChild(feedbackItem);
     feedDash.appendChild(feedbackList);
 }
 
-{/* <button id='feedbacks-${feedback.feedback_id}' onclick='adminDeletefeedback(${feedback.feedback_id})' type="button" class="px-2 m-0 delete-btn">DELETE</button> */}
 
 function displayFeedbacks(arr) {
     feedDash.innerHTML = '';
@@ -164,8 +134,6 @@ function displayFeedbacks(arr) {
         createFeedback(feedback);
     });
 }
-
-// update the status of the feedback resolved to true
 
 const resolveBtns = document.querySelectorAll('.resolve-btn');
 
@@ -188,9 +156,6 @@ function showAdminDashboard() {
 function showFeedbacks() {
     feedDash.style.display = 'block';
 }
-
-
-
 
 
 getAdminVenues();
