@@ -25,16 +25,27 @@ body {
     text-align: center;
     overflow-x: hidden;
 }
+
+header,
+.navbar,
+.collaps {
+    z-index: 9999;
+}
 header {
     width: 100%;
     margin-bottom: 30px;
+    height: 100px;
+
 }
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
+nav {
+    background: #09357d38;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 10px;
+    
 }
+/* .container {
+    margin-top: 85px;
+} */
 
 div > ul {
     list-style-type: none;
@@ -85,6 +96,11 @@ div > ul {
     font-weight: bold;
     text-decoration: none;
 }
+.container {
+    height: calc(100vh - 100px);
+    margin: auto;
+    z-index: -10;
+}
 
 section {
     font-weight: bold;
@@ -101,15 +117,54 @@ h3 {
     text-align: center;
     text-shadow: 5px 5px 3px #3d539e;
 }
-.dashboard {
+.view {
     display: none;
-    border: 2px solid black;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
-    /* padding: 10px; */
+    padding: 10px;
 
 }
+.list {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 2px 0   ;
+}
+.fb-text,
+.v-text {
+    font-size: 13px;
+}
+.resolve-btn {
+    border-radius: 50%;
+}
+.resolve-btn,
+.fb-delete-btn   {
+    height: 28px;
+    font-size: 13px;
+    color: #89aadb;
+    border:none;
+    background: transparent;
+    box-shadow: none;
+}
+.resolve-btn:hover,
+.resolve-btn:active,
+.resolve-btn:focus {
+    color: #20d693;
+    border: none;
+    background: transparent;
+}
+
+.fb-delete-btn:hover,
+.fb-delete-btn:active,
+.fb-delete-btn:focus {
+    color: #20d693;
+    border: none;
+    background: transparent;
+    box-shadow:  3px 3px 6px #2d3d74,
+        -3px -3px 6px #3d539e;
+}
+
 .admin-venues {
     /* margin: 30px 0; */
     display: flex;
@@ -129,13 +184,14 @@ h3 {
     border-top: none;
 }
 .delete-btn {
+    height: 28px;
     background: #d45454;
     color: white;
     border: white;
     border-radius: 5px;
     padding: 5px 10px;
     margin: 10px;
-    font-size: 14px;
+    font-size: 13px;
     box-shadow:none;
 }
 
@@ -252,21 +308,6 @@ p {
     font-size: 30px;
 }
 
-.see-comment-btn {
-    
-    font-size: 14px;
-    justify-self: end;
-}
-.comments-holder {
-    display: none;
-    flex-direction: column;
-}
-.author {
-    display: block;
-    text-align: right;
-}
-
-
 
 /* BREAKPOINTS */
 
@@ -315,6 +356,10 @@ p {
     }
     h3 {
         font-size: 56px;
+    }
+    .fb-text,
+    .-v-text {
+        font-size: 16px;
     }
 } 
 

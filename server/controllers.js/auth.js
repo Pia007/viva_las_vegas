@@ -41,27 +41,33 @@ module.exports = {
     //  admin
     loginAdmin: (req, res) => {
         console.log('Logging in Admin');
-        const {username, password} = req.body;
-        console.log(req.body);
+        // const {user, pwd} = req.body;
+        let user = req.body.username;
+        let pwd = req.body.password;
+        console.log(req.body.username);
+        console.log(req.body.password);
+        console.log(user);
+        console.log(pwd); 
 
-        sequelize.query(`SELECT * FROM admin WHERE username = '${username}';`)
+        sequelize.query(`SELECT username, password FROM admin WHERE username = '${user}';`)
         .then(dbRes => {
             console.log(dbRes[0]);
-            if (dbRes[0].length === 0) {
-                res.status(401).send('Username not found');
+            let resBody = dbRes[0];
+            console.log(resBody);
+            let pwdHash = resBody[0].password;
+            console.log(pwdHash);
+            const isMatch = bcrypt.compareSync(pwd, pwdHash);
+            if(isMatch) {
+                console.log('Passwords match');
+                res.status(200).send(dbRes[0]);
             } else {
-                let returnedRes = { ...dbRes[0][0] };
-                delete returnedRes.password;
-                console.log(returnedRes);
-                if (bcrypt.compareSync(password, dbRes[0][0].password)) {
-                    res.status(200).send(returnedRes);
-                } else {
-                    res.status(401).send('Incorrect password');
-                }
+                console.log('Passwords do not match');
+                res.sendStatus(401);
             }
         }).catch(err => {
             console.log(err);
             res.sendStatus(500);
         });
     }
-};
+}
+

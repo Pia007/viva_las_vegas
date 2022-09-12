@@ -1,6 +1,7 @@
 const dashboard = document.querySelector('#admin-dash');
-const venueHolder = document.querySelector('#venue-holder');
 const feedDash = document.getElementById('feedback-dash');
+const viewVenueBtn = document.querySelector('.v-venues');
+const viewFeedbackBtn = document.querySelector('.v-feedbacks');
 
 const baseURL = `http://localhost:9007/api`;
 
@@ -22,7 +23,8 @@ const getFeedbacks = () => axios.get(`${baseURL}/admin/feedbacks`).then(feedback
 
 const getAdminVenues = () => axios.get(`${baseURL}/venues`).then(adminVenuesCallback);
 const deleteVenue = (id) => axios.delete(`${baseURL}/admin/venues/${id}`).then(getAdminVenues).catch(errCallback);
-const updateFeedback = (id) => axios.put(`${baseURL}/admin/feedbacks/${id}`).then(getFeedbacks)
+const updateFeedback = (id) => axios.put(`${baseURL}/admin/feedbacks/${id}`).then(getFeedbacks);
+const deleteFeedback = (id) => axios.delete(`${baseURL}/admin/feedbacks/${id}`).then(getFeedbacks)
 
 
 function createAdminView(venue) {
@@ -32,13 +34,15 @@ function createAdminView(venue) {
 
 
     const venuesList = document.createElement('div');
+
     venuesList.classList.add('col');
+    venuesList.classList.add('list');
 
     const venueItem = document.createElement('div');
     
     venueItem.classList.add('venue-item');
-    venueItem.classList.add('col-xs')
-    venueItem.classList.add('col-md-4');
+    venueItem.classList.add('col')
+    // venueItem.classList.add('col-md-6');
     venueItem.classList.add('col-lg-10');
     venueItem.classList.add('p-2');
     venueItem.classList.add('m-auto');
@@ -48,11 +52,11 @@ function createAdminView(venue) {
         
         <div id='id-${venue.venue_id} class='p-3 d-flex flex-direction-row justify-content-evenly'>
             <div class='d-flex flex-direction-row justify-content-between'>
-                <span class='px-1 '>${venue.venue_id}</span>
-                <span class='mx-2'>${venue.venue_name}</span>
-                <span class='px-0 '>${venue.likes} Likes</span>
+                <span class='px-1 v-text'>ID: ${venue.venue_id}</span>
+                <span class='mx-2 v-text'>${venue.venue_name}</span>
+                <span class='px-0 v-text'>Likes: ${venue.likes} </span>
                 
-                <button id='venues-${venue.venue_id}' onclick='adminDeleteVenue(${venue.venue_id})' type="button" class="px-2 m-0 delete-btn">DELETE</button>
+                <button id='venues-${venue.venue_id}' onclick='adminDeleteVenue(${venue.venue_id})' type="button" class="px-2 m-0 delete-btn"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </div>
         </div>
         
@@ -82,6 +86,7 @@ function adminDeleteVenue(e) {
     console.log(id);
     
     deleteVenue(id);
+    
 }
 
 
@@ -99,6 +104,7 @@ function createFeedback(feedback) {
 
     const feedbackList = document.createElement('div');
     feedbackList.classList.add('col');
+    feedbackList.classList.add('list');
 
     const feedbackItem = document.createElement('div');
     
@@ -114,11 +120,12 @@ function createFeedback(feedback) {
         
         <div id='id-${feedback.feedback_id} class='p-3 d-flex flex-direction-row justify-content-evenly'>
             <div class='d-flex flex-direction-row justify-content-between'>
-                <span class='px-1 '>${feedback.feedback_id}</span>
-                <span class='mx-2'>${feedback.feedback}</span>
-                <span class='px-0 '>${feedback.resolved} </span>
+                <span class='px-1 fb-text'>ID: ${feedback.feedback_id}</span>
+                <span class='mx-2 fb-text'>${feedback.feedback}</span>
+                <span class='px-0 fb-text'>Read: ${feedback.resolved} </span>
 
-                <button id='feedbacks-${feedback.feedback_id}' onclick='adminFeedBackUpdate(${feedback.feedback_id})' type="button" class="px-2 m-0 resolve-btn">RESOLVE</button>
+                <button id='feedbacks-${feedback.feedback_id}' onclick='adminFeedBackUpdate(${feedback.feedback_id})' type="button" class="px-2 m-0 resolve-btn"><i class="fa fa-check-circle-o" aria-hidden="true"></i></button>
+                <button id='feedbacks-${feedback.feedback_id}' onclick='adminFeedBackDelete(${feedback.feedback_id})' type="button" class="px-2 m-0 fb-delete-btn"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </div>
         </div>
     `;
@@ -136,6 +143,7 @@ function displayFeedbacks(arr) {
 }
 
 const resolveBtns = document.querySelectorAll('.resolve-btn');
+const fbDeleteBtns = document.querySelectorAll('.fb-delete-btn');
 
 
 function adminFeedBackUpdate(e) {
@@ -146,8 +154,28 @@ function adminFeedBackUpdate(e) {
     resolveBtn = document.querySelector(`#feedback-${id}`);
 
     updateFeedback(id);
-    
+
 };
+
+resolveBtns.forEach(resolveBtn => {
+    resolveBtn.addEventListener('click', adminFeedBackUpdate);
+    
+});
+
+
+function adminFeedBackDelete(e) {
+    let id = e;
+    id = parseInt(id);
+    console.log(id);
+    console.log(`Delete feedback ${id}`);
+    fbDeleteBtn = document.querySelector(`#feedback-${id}`);
+
+    deleteFeedback(id);
+}
+
+fbDeleteBtns.forEach(fbDeleteBtn => {
+    fbDeleteBtn.addEventListener('click', adminFeedBackDelete);
+});
 
 function showAdminDashboard() {
     dashboard.style.display = 'block';
@@ -156,6 +184,13 @@ function showAdminDashboard() {
 function showFeedbacks() {
     feedDash.style.display = 'block';
 }
+
+function showVenues() {
+    dashboard.style.display = 'block';
+}
+
+// viewVenueBtn.addEventListener('click', showVenues);
+// viewFeedbackBtn.addEventListener('click', showFeedbacks);
 
 
 getAdminVenues();

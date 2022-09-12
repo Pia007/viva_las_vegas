@@ -40,7 +40,8 @@ const {
     deleteVenue,
     getAdminFeedback,
     createFeedback,
-    updateFeedback
+    updateFeedback,
+    deleteFeedback
 
 } = require('./controllers.js/admin.js');
 
@@ -63,6 +64,7 @@ app.get('/api/venues', getVenues);
 app.post('/api/venues', addVenue);
 app.put('/api/venues/:id', likeVenue);
 
+
 app.get('/api/venues', getAdminVenues);
 app.get('/api/admin/likes', getAdminVenuesLikes);
 app.delete('/api/admin/venues/:id', deleteVenue);
@@ -71,9 +73,13 @@ app.get('/api/admin/feedbacks', getAdminFeedback);
 
 app.post('/api/feedbacks', createFeedback);
 app.put('/api/admin/feedbacks/:id', updateFeedback);
+app.delete('/api/admin/feedbacks/:id', deleteFeedback);
 
 app.post('/api/admin/register', registerAdmin);
+//direct to admin page after login
 app.post('/api/admin/login', loginAdmin);
+
+
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));

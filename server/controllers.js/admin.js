@@ -92,6 +92,18 @@ module.exports = {
             res.sendStatus(500);
         });
     },
-    
-
+    // delete the feedback once resolved
+    deleteFeedback: (req, res) => {
+        let {feedbackId} = req.params.id;
+        feedbackId = Number(req.params.id);
+        console.log(feedbackId);
+        sequelize.query(`DELETE FROM feedbacks WHERE feedback_id = ${feedbackId};`)
+        .then(dbRes => {
+            console.log(dbRes[0]);
+            res.status(200).send(dbRes[0]);
+        }).catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+    }
 }
