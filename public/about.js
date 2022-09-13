@@ -1,5 +1,5 @@
 const feedbackForm = document.getElementById('feedback-form');
-const feedbackmsg = document.querySelector('.feedback-msg');
+const feedbackMsg = document.querySelector('.feedback-msg');
 
 const baseURL = `http://localhost:9007/api`
 
