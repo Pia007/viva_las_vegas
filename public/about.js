@@ -6,8 +6,8 @@ const feedbackCallback = ({ data: feedbacks }) => {
     displayFeedbacks(feedbacks);
 };
 
-const getFeedbacks = () => axios.get(`${baseURL}/feedbacks`).then(feedbackCallback);
-const addFeedback = (body) => axios.post(`${baseURL}/feedbacks`, body);
+const getFeedbacks = () => axios.get(`/api/feedbacks`).then(feedbackCallback);
+const addFeedback = (body) => axios.post(`/api/feedbacks`, body);
 
 
 function submitFeedback(e) {

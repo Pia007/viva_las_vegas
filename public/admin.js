@@ -18,13 +18,13 @@ const feedbackCallback = ({ data: feedbacks }) => {
 
 const errCallBack = (err) => console.log(err.response.data)
 
-const getFeedbacks = () => axios.get(`${baseURL}/admin/feedbacks`).then(feedbackCallback);
+const getFeedbacks = () => axios.get(`/api/admin/feedbacks`).then(feedbackCallback);
 
-const getAdminVenues = () => axios.get(`${baseURL}/venues`).then(adminVenuesCallback);
-const getSortedVenues = (sort) => axios.get(`${baseURL}/venues/${sort}`).then(adminVenuesCallback);
-const deleteVenue = (id) => axios.delete(`${baseURL}/admin/venues/${id}`).then(getAdminVenues).catch(errCallback);
-const updateFeedback = (id) => axios.put(`${baseURL}/admin/feedbacks/${id}`).then(getFeedbacks);
-const deleteFeedback = (id) => axios.delete(`${baseURL}/admin/feedbacks/${id}`).then(getFeedbacks)
+const getAdminVenues = () => axios.get(`/api/venues`).then(adminVenuesCallback);
+const getSortedVenues = (sort) => axios.get(`/api/venues/${sort}`).then(adminVenuesCallback);
+const deleteVenue = (id) => axios.delete(`/api/admin/venues/${id}`).then(getAdminVenues).catch(errCallback);
+const updateFeedback = (id) => axios.put(`/api/admin/feedbacks/${id}`).then(getFeedbacks);
+const deleteFeedback = (id) => axios.delete(`/api/admin/feedbacks/${id}`).then(getFeedbacks)
 
 
 function createAdminView(venue) {

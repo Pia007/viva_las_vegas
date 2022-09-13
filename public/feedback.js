@@ -10,7 +10,7 @@ const feedbackCallback = ({ data: feedbacks }) => {
 
 const errCallBack = (err) => console.log(err.response.data)
 
-const getFeedbacks = () => axios.get(`${baseURL}/feedbacks`).then(feedbackCallback);
+const getFeedbacks = () => axios.get(`/api/feedbacks`).then(feedbackCallback);
 function createFeedback(feedback) {
     
     let id = feedback.feedback_id;
