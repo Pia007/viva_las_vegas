@@ -16,7 +16,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 
 module.exports = {
     getAdminVenues: (req, res) => {
-        sequelize.query(`SELECT venue_id, venue_name, likes 
+        sequelize.query(`SELECT venue_id, venue_name, author, likes 
         FROM venues
         ORDER BY created_at DESC;`)
         .then(dbRes => {
@@ -31,6 +31,20 @@ module.exports = {
         sequelize.query(`SELECT * FROM venues ORDER BY likes DESC`)
         .then(dbRes => {
             console.log(dbRes[0]);
+            res.status(200).send(dbRes[0]);
+        }).catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+    },
+    
+    getAdminVenuesSort: (req, res) => {
+        let {sort} = req.params;
+        console.log(sort);
+
+        sequelize.query(`SELECT * FROM venues ORDER BY ${sort} ASC;`)
+        .then(dbRes => {
+            // console.log(dbRes[0]);
             res.status(200).send(dbRes[0]);
         }).catch(err => {
             console.log(err);
@@ -92,7 +106,7 @@ module.exports = {
             res.sendStatus(500);
         });
     },
-    // delete the feedback once resolved
+    // delete the feedback
     deleteFeedback: (req, res) => {
         let {feedbackId} = req.params.id;
         feedbackId = Number(req.params.id);
@@ -106,4 +120,5 @@ module.exports = {
             res.sendStatus(500);
         });
     }
+    
 }

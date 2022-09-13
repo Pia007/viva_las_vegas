@@ -1,7 +1,9 @@
 const dashboard = document.querySelector('#admin-dash');
 const feedDash = document.getElementById('feedback-dash');
-const viewVenueBtn = document.querySelector('.v-venues');
-const viewFeedbackBtn = document.querySelector('.v-feedbacks');
+const idBtn = document.querySelector('.admin-id-btn');
+const venueBtn = document.querySelector('.admin-venue-btn');
+const authorBtn = document.querySelector('.admin-author-btn');
+const likesBtn = document.querySelector('.admin-like-btn');
 
 const baseURL = `http://localhost:9007/api`;
 
@@ -22,6 +24,7 @@ const errCallBack = (err) => console.log(err.response.data)
 const getFeedbacks = () => axios.get(`${baseURL}/admin/feedbacks`).then(feedbackCallback);
 
 const getAdminVenues = () => axios.get(`${baseURL}/venues`).then(adminVenuesCallback);
+const getSortedVenues = (sort) => axios.get(`${baseURL}/venues/${sort}`).then(adminVenuesCallback);
 const deleteVenue = (id) => axios.delete(`${baseURL}/admin/venues/${id}`).then(getAdminVenues).catch(errCallback);
 const updateFeedback = (id) => axios.put(`${baseURL}/admin/feedbacks/${id}`).then(getFeedbacks);
 const deleteFeedback = (id) => axios.delete(`${baseURL}/admin/feedbacks/${id}`).then(getFeedbacks)
@@ -41,10 +44,9 @@ function createAdminView(venue) {
     const venueItem = document.createElement('div');
     
     venueItem.classList.add('venue-item');
-    venueItem.classList.add('col')
-    // venueItem.classList.add('col-md-6');
+    venueItem.classList.add('col');
     venueItem.classList.add('col-lg-10');
-    venueItem.classList.add('p-2');
+    venueItem.classList.add('p-1');
     venueItem.classList.add('m-auto');
     venueItem.classList.add('bg-none');
 
@@ -54,6 +56,7 @@ function createAdminView(venue) {
             <div class='d-flex flex-direction-row justify-content-between'>
                 <span class='px-1 v-text'>ID: ${venue.venue_id}</span>
                 <span class='mx-2 v-text'>${venue.venue_name}</span>
+                <span class='px-0 v-text'>${venue.author} </span>
                 <span class='px-0 v-text'>Likes: ${venue.likes} </span>
                 
                 <button id='venues-${venue.venue_id}' onclick='adminDeleteVenue(${venue.venue_id})' type="button" class="px-2 m-0 delete-btn"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -189,8 +192,39 @@ function showVenues() {
     dashboard.style.display = 'block';
 }
 
-// viewVenueBtn.addEventListener('click', showVenues);
-// viewFeedbackBtn.addEventListener('click', showFeedbacks);
+
+// sort venues by id in ascending order
+function sortVenuesByIdAsc() {
+    let sort = 'venue_id';
+    
+    console.log(sort);
+    
+    getSortedVenues(sort);
+
+}
+
+function sortByVenueNameAsc() {
+    let sort = 'venue_name';
+
+    getSortedVenues(sort);
+}
+
+function sortByVenueAuthorAsc() {
+    let sort = 'author';
+    
+    getSortedVenues(sort);
+}
+
+function sortByVenueLikesAsc() {
+    let sort = 'likes';
+
+    getSortedVenues(sort);
+}
+
+idBtn.addEventListener('click', sortVenuesByIdAsc);
+venueBtn.addEventListener('click', sortByVenueNameAsc);
+authorBtn.addEventListener('click', sortByVenueAuthorAsc);
+likesBtn.addEventListener('click', sortByVenueLikesAsc);
 
 
 getAdminVenues();

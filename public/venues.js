@@ -118,6 +118,7 @@ function likeVenue(e) {
     likes += 1;
 
     updateLike(id, likes);
+    console.log(id, likes);
 }
 
 

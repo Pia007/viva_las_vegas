@@ -3,7 +3,6 @@ const userName = document.querySelector('#username');
 const passWord = document.querySelector('#password');
 const loginMsg = document.querySelector('#login-msg');
 
-// write axios post request to login admin
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = userName.value;

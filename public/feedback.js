@@ -1,5 +1,4 @@
 const feedDash = document.getElementById('feedback-dash');
-// const feedbackForm = document.getElementById('feedback-form');
 
 const baseUrl = `http://localhost:9007/api`
 

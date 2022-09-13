@@ -10,6 +10,7 @@
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/9794dd2b19.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="/admin.css">
     <title>Viva Las Vegas</title>
 </head>
@@ -33,7 +34,16 @@
         </nav>
     </header>
     <div class="container">
-        <h3> Admin Venues</h3> 
+        <h3> Admin Venues</h3>
+        <div class="">
+            <button type="button" class="px-2 admin-btn admin-id-btn">ID</button>
+            <button type="button" class="px-2 admin-btn admin-venue-btn">Venue</button>
+            <button type="button" class="px-2 admin-btn admin-author-btn">Author</button>
+            <button type="button" class="px-2 admin-btn admin-like-btn">Likes</button>
+        </div>
+        <!-- <div class="" role="toolbar" aria-label="Toolbar with button groups>
+            
+        </div> -->
         <section id='admin-dash' class="row d-flex flex-column text-align-center my-2 view">
             
         </section>
@@ -42,6 +52,10 @@
             
         </section>
     </div>
+
+    <button class="scroll">
+        <a href="#" alt="scroll to top" class="scroll-link"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+    </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="/admin.js"></script>

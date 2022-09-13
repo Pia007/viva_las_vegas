@@ -37,6 +37,7 @@ const {
 const {
     getAdminVenues,
     getAdminVenuesLikes,
+    getAdminVenuesSort,
     deleteVenue,
     getAdminFeedback,
     createFeedback,
@@ -50,15 +51,6 @@ const {
     loginAdmin
 } = require('./controllers.js/auth.js');
 
-//write a middleware to check if admin is logged in
-// const checkAdmin = (req, res, next) => {
-    
-//     if(req.admin) {
-//         next();
-//     } else {
-//         res.status(401).send('You are not logged in');
-//     }
-// }
 
 app.get('/api/venues', getVenues);
 app.post('/api/venues', addVenue);
@@ -67,6 +59,7 @@ app.put('/api/venues/:id', likeVenue);
 
 app.get('/api/venues', getAdminVenues);
 app.get('/api/admin/likes', getAdminVenuesLikes);
+app.get('/api/venues/:sort', getAdminVenuesSort); 
 app.delete('/api/admin/venues/:id', deleteVenue);
 app.get('/api/admin/feedbacks', getAdminFeedback);
 

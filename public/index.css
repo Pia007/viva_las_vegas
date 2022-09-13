@@ -26,36 +26,18 @@ body {
     overflow-x: hidden;
 }
 header {
-    /* margin-top: 0; */
     width: 100%;
     margin-bottom: 30px;
     background: #09357d38;
-    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 10px;
     z-index: 5;
     height: 100px;
 }
 nav {
-    background: #09357d38;
+    background: rgb(2, 4, 54);
+    /* background: #09357d38; */
     box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 10px;
     z-index: 5;
 }
-/* nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-} */
-
-/* .venue-container {
-    margin-top: 100px;
-    z-index: -10;
-} */
 
 div > ul {
     list-style-type: none;
@@ -66,9 +48,6 @@ div > ul {
     justify-content: center;
     background: transparent; 
 }
-/* .nav {
-    box-shadow: rgba(0, 0, 0, 0.8);
-} */
 .logo {
     width: 100px;
     height: 75px;
@@ -139,10 +118,10 @@ section > div {
 
     padding: 20px;
 }
+
 form {
     width: 100%;
     display: flex;
-    /* padding: 25px; */
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -151,7 +130,6 @@ form {
 
 input {
     height: 35px;
-    /* width: 75%; */
     margin-bottom: 30px;
     padding: 5px 8px;
 
@@ -207,7 +185,7 @@ p {
     text-align: Left;
 }
 
-
+/*  Venue Cards */
 .card {
     background: rgba(0, 0, 0, 0.8);
 }
@@ -245,10 +223,6 @@ p {
     margin-top: 0px;
 }
 
-.comments-section {
-    width: 100%;
-    border-top: 2px solid #20d693;
-}
 
 #add-venue-holder {
     display: none;
@@ -271,33 +245,16 @@ p {
 .btn-cancel:hover,
 .btn-cancel:focus,
 .btn-cancel:active {
-    /* border:none;  */
     box-shadow: -inset 2px 2px 10px #2d3d74,
         inset -2px -2px 10px #3d539e;
     color: rgb(255, 0, 0);
     cursor: pointer;
-    /* text-shadow: #8db7a7 0px 0px 10px; */
 }
 
 .fa-times-circle {
     font-size: 30px;
 }
 
-.see-comment-btn {
-    /* background: transparent;
-    border: none;
-    box-shadow: none; */
-    /* color: #20d693; */
-    font-size: 14px;
-    justify-self: end;
-    /* font-weight: bold; */
-    /* text-shadow: 2px 2px 2px #89aadb; */
-}
-.comments-holder {
-    display: none;
-    /* display: flex; */
-    flex-direction: column;
-}
 .author {
     display: block;
     text-align: right;
@@ -307,6 +264,7 @@ p {
     margin: 0;
 }
 
+/* login message */
 .access-msg {
     visibility: hidden;
     text-align: center;
@@ -314,6 +272,29 @@ p {
     font-weight: bold;
     color: rgb(209, 40, 40);
     text-shadow: 2px 2px 2px #89aadb;
+}
+
+/* scroll to top */
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 53px;
+}
+
+.scroll {
+    position:fixed;
+    right: 10px;
+    bottom: 10px;
+    width:35px;
+    border: 2px solid rgb(255, 128, 0);
+    border-radius: 50%;
+    background: none;
+}
+
+.scroll-link {
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(255, 128, 0);
 }
 
 

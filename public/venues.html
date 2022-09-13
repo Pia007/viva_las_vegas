@@ -18,7 +18,7 @@
 </head>
 
 <body class="">
-    <header class="fixed-top">
+    <header class="">
         <nav class="navbar navbar-expand-md justify-content-between p-0 mb-4 fixed-top ">
             <a class="navbar-brand" href="/"><img class="logo" src="vegas.logo.png" alt="las vegas logo"></a>
             <button class="navbar-toggler mx-2 px-1" type="button" data-toggle="collapse"
@@ -54,7 +54,6 @@
                     <button id="cancel" class="p-0 mr-3 btn-cancel" type="button"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
                     <h3>Add a Venue</h3>
                     
-                    
                     <div class="form-group col">
                         <input type="text" id="venue-name" placeholder="Venue Name" class="form-control" />
                     </div>
@@ -79,12 +78,13 @@
             </div>
         </section>
 
-        <section id="posts" class="row d-flex flex-row justify-content-around mb-6 px-3"></section>
-
-        <section id="comments" class="row d-flex flex-row justify-content-around mb-6 px-3"></section>
+        <section id="posts" class="row d-flex flex-row justify-content-around mb-6 px-2"></section>
         
     </div>
-    <!-- <section class="dreams-list"></section> -->
+    
+    <button class="scroll">
+        <a href="#" alt="scroll to top" class="scroll-link"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+    </button>
 
     <!-- install axios from node modules -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
