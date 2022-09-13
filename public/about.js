@@ -1,4 +1,5 @@
 const feedbackForm = document.getElementById('feedback-form');
+const feedbackmsg = document.querySelector('.feedback-msg');
 
 const baseURL = `http://localhost:9007/api`
 
@@ -22,6 +23,8 @@ function submitFeedback(e) {
 
     
     feedbackForm.reset();
+
+    feedbackMsg.style.visibility = 'visible';
 
     addFeedback(newFeedback);
 }
