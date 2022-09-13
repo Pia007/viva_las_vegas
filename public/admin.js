@@ -8,13 +8,10 @@ const likesBtn = document.querySelector('.admin-like-btn');
 const baseURL = `http://localhost:9007/api`;
 
 const adminVenuesCallback = ({ data: venues }) => {
-    console.log(venues);
     displayAdminVenues(venues);
-    console.log(venues);
 };
 
 const feedbackCallback = ({ data: feedbacks }) => {
-    console.log(feedbacks);
     displayFeedbacks(feedbacks);
 };
 
@@ -32,13 +29,12 @@ const deleteFeedback = (id) => axios.delete(`${baseURL}/admin/feedbacks/${id}`).
 
 function createAdminView(venue) {
     
-    console.log(`Venue ${venue.venue_id}`);
     let id = venue.venue_id;
-
 
     const venuesList = document.createElement('div');
 
     venuesList.classList.add('col');
+    venuesList.classList.add('p-1');
     venuesList.classList.add('list');
 
     const venueItem = document.createElement('div');
@@ -83,13 +79,9 @@ const deleteBtns = document.querySelectorAll('.delete-btn');
 function adminDeleteVenue(e) {
     let id = e;
     id= parseInt(id);
-    console.log(`Delete venue ${id}`);
     deleteBtn = document.querySelector(`#venue-${id}`);
     
-    console.log(id);
-    
     deleteVenue(id);
-    
 }
 
 
@@ -101,7 +93,6 @@ deleteBtns.forEach(deleteBtn => {
 
 function createFeedback(feedback) {
     
-    console.log(`FeedBack ${feedback.feedback_id}`);
     let id = feedback.feedback_id;
 
 
@@ -113,7 +104,7 @@ function createFeedback(feedback) {
     
     feedbackItem.classList.add('feedback-item');
     feedbackItem.classList.add('col-xs')
-    feedbackItem.classList.add('col-md-4');
+    feedbackItem.classList.add('col-md-12');
     feedbackItem.classList.add('col-lg-10');
     feedbackItem.classList.add('p-2');
     feedbackItem.classList.add('m-auto');
@@ -152,8 +143,6 @@ const fbDeleteBtns = document.querySelectorAll('.fb-delete-btn');
 function adminFeedBackUpdate(e) {
     let id = e;
     id = parseInt(id);
-    console.log(id);
-    console.log(`Update feedback ${id}`);
     resolveBtn = document.querySelector(`#feedback-${id}`);
 
     updateFeedback(id);
@@ -169,8 +158,6 @@ resolveBtns.forEach(resolveBtn => {
 function adminFeedBackDelete(e) {
     let id = e;
     id = parseInt(id);
-    console.log(id);
-    console.log(`Delete feedback ${id}`);
     fbDeleteBtn = document.querySelector(`#feedback-${id}`);
 
     deleteFeedback(id);
@@ -197,10 +184,7 @@ function showVenues() {
 function sortVenuesByIdAsc() {
     let sort = 'venue_id';
     
-    console.log(sort);
-    
     getSortedVenues(sort);
-
 }
 
 function sortByVenueNameAsc() {

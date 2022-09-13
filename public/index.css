@@ -39,7 +39,7 @@ nav {
     z-index: 5;
 }
 
-div > ul {
+.collapse > ul {
     list-style-type: none;
     margin: 0;
     padding: 10px;
@@ -58,9 +58,7 @@ div > ul {
 }
 
 .nav-item {
-    /* padding: 10px; */
     margin: 0 10px;
-    
     border-radius: 5px;
     box-shadow:  5px 5px 10px #2d3d74,
         -5px -5px 10px #3d539e;
@@ -88,9 +86,12 @@ div > ul {
     font-weight: bold;
     text-decoration: none;
 }
+.active {
+    opacity: 50%;
+}
 
 .container {
-    height: calc(100vh - 100px);
+    height: calc(90vh - 10vh);
 }
 
 section {

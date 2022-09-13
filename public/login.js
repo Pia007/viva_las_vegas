@@ -5,14 +5,12 @@ const loginMsg = document.querySelector('#login-msg');
 
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
     const username = userName.value;
-    console.log(username);
-    
     const password = passWord.value;
-    console.log(password);
+
     axios.post('/api/admin/login', {username, password})
     .then(res => {
-        console.log(res.data);
         window.location.href = 'admin.html';
     }).catch(err => {
         loginMsg.style.visibility = 'visible';

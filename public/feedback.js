@@ -4,7 +4,6 @@ const baseUrl = `http://localhost:9007/api`
 
 
 const feedbackCallback = ({ data: feedbacks }) => {
-    console.log(feedbacks);
     displayFeedbacks(feedbacks);
 };
 
@@ -14,7 +13,6 @@ const errCallBack = (err) => console.log(err.response.data)
 const getFeedbacks = () => axios.get(`${baseURL}/feedbacks`).then(feedbackCallback);
 function createFeedback(feedback) {
     
-    console.log(`FeedBack ${feedback.feedback_id}`);
     let id = feedback.feedback_id;
 
 

@@ -9,7 +9,6 @@ const baseURL = `http://localhost:9007/api`
 
 const venuesCallback = ({ data: venues }) => {
     displayVenues(venues);
-    console.log(venues);
 };
 
 const commentsCallback = ({ data: comments }) => {
@@ -51,7 +50,6 @@ const submitForm = (e) => {
         website_url: venueWebsite.value,
         likes: 0
     };
-    console.log(newVenueObj);
 
     createVenue(newVenueObj);
     venueName.value = '';
@@ -68,7 +66,6 @@ const submitForm = (e) => {
 
 function createVenueCard(venue) {
     
-    console.log(`Venue ${venue.venue_id}`);
     let id = venue.venue_id;
 
     const venueCard = document.createElement('div');
@@ -111,14 +108,12 @@ function displayVenues(arr) {
 function likeVenue(e) {
     let id = e;
     id = parseInt(id);
-    console.log(id);
 
     let likeSpan = document.querySelector('span');
     let likes = parseInt(likeSpan.innerText);
     likes += 1;
 
     updateLike(id, likes);
-    console.log(id, likes);
 }
 
 

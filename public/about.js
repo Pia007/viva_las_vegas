@@ -3,7 +3,6 @@ const feedbackForm = document.getElementById('feedback-form');
 const baseURL = `http://localhost:9007/api`
 
 const feedbackCallback = ({ data: feedbacks }) => {
-    console.log(feedbacks);
     displayFeedbacks(feedbacks);
 };
 
@@ -21,7 +20,6 @@ function submitFeedback(e) {
         resolved: false
     }; 
 
-    console.log(feedback);
     
     feedbackForm.reset();
 

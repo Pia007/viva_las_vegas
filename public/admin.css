@@ -15,17 +15,22 @@
     border-radius: 5px;
     margin: 2px 0   ;
 }
+.admin-btn {
+    height: 25px;
+    font-size: 14px;
+}
 .fb-text,
 .v-text {
-    font-size: 13px;
+    font-size: 12px;
+    text-shadow: 3px 3px 3px #3d539e;
 }
 .resolve-btn {
     border-radius: 50%;
 }
 .resolve-btn,
 .fb-delete-btn   {
-    height: 28px;
-    font-size: 13px;
+    height: 25px;
+    font-size: 12px;
     color: #89aadb;
     border:none;
     background: transparent;
@@ -78,10 +83,42 @@
 
 /* BREAKPOINTS */
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width:576px) {
+    .admin-btn {
+        height: 30px;
+        font-size: 16px;
+    }
     .fb-text,
     .v-text {
         font-size: 16px;
+    }
+    .delete-btn,
+    .resolve-btn,
+    .fb-delete-btn {
+        height: 30px;
+        font-size: 16px;
+    }
+}
+@media screen and (min-height: 992px) {
+    .admin-btn {
+        height: 35px;
+        font-size: 18px;
+    }
+}
+@media screen and (min-width:1200px) {
+    
+    .fb-text,
+    .v-text {
+        font-size: 16px;
+    }
+    .delete-btn,
+    .resolve-btn,
+    .fb-delete-btn {
+        height: 30px;
+        font-size: 18px;
+    }
+    fa-check-cirle {
+        font-size: 18px;
     }
 } 
 

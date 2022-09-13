@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-// configure server to use dotenv
 const path = require('path');
 
 const express = require('express');
@@ -9,7 +8,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-//destructure the port from the .env file
+
 const {SERVER_PORT} = process.env;
 const {seed} = require('./seed.js');
 
@@ -69,9 +68,8 @@ app.put('/api/admin/feedbacks/:id', updateFeedback);
 app.delete('/api/admin/feedbacks/:id', deleteFeedback);
 
 app.post('/api/admin/register', registerAdmin);
-//direct to admin page after login
-app.post('/api/admin/login', loginAdmin);
 
+app.post('/api/admin/login', loginAdmin);
 
 
 
