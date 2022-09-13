@@ -12,7 +12,8 @@ app.use(express.json());
 const {seed} = require('./seed.js');
 
 
-app.use(express.static(path.join(__dirname, './public/index.html')));
+app.use(express.static(path.join(__dirname, '../public/')));
+
 
 app.get('/', (req, res) => {
     res.sendfile(path.join(__dirname, '../index.html'));
