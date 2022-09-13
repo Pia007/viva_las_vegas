@@ -28,7 +28,8 @@
     border-radius: 50%;
 }
 .resolve-btn,
-.fb-delete-btn   {
+.fb-delete-btn,
+.delete-btn   {
     height: 25px;
     font-size: 12px;
     color: #89aadb;
@@ -46,7 +47,10 @@
 
 .fb-delete-btn:hover,
 .fb-delete-btn:active,
-.fb-delete-btn:focus {
+.fb-delete-btn:focus,
+.delete-btn:hover,
+.delete-btn:active,
+.delete-btn:focus{
     color: #20d693;
     border: none;
     background: transparent;
@@ -68,18 +72,6 @@
 .feedback-item:first-child {
     border-top: none;
 }
-.delete-btn {
-    height: 28px;
-    background: transparent;
-    color: white;
-    border: white;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin: 10px;
-    font-size: 13px;
-    box-shadow:none;
-}
-
 
 /* BREAKPOINTS */
 
