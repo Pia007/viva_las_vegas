@@ -19,12 +19,12 @@ const commentsCallback = ({ data: comments }) => {
 const errCallback = (err) => console.log(err.response.data);
 
 
-const getAllVenues = () => axios.get(`/api/venues`).then(venuesCallback);
-const createVenue = (body) => axios.post(`/api/venues`, body).then(getAllVenues).catch(errCallback);
-const updateLike = (id, likes) => axios.put(`/api/venues/${id}`, { likes }).then(getAllVenues).catch(errCallback);
+const getAllVenues = () => axios.get(`api/venues`).then(venuesCallback);
+const createVenue = (body) => axios.post(`api/venues`, body).then(getAllVenues).catch(errCallback);
+const updateLike = (id, likes) => axios.put(`api/venues/${id}`, { likes }).then(getAllVenues).catch(errCallback);
 
 const getComments = () => axios.get(`/api/comments`).then(commentsCallback);
-const getVenueComments = (id) => axios.get(`/api/comments/${id}`).then(commentsCallback).catch(errCallback);
+const getVenueComments = (id) => axios.get(`api/comments/${id}`).then(commentsCallback).catch(errCallback);
 
 
 const submitForm = (e) => {

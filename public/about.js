@@ -6,8 +6,8 @@ const feedbackCallback = ({ data: feedbacks }) => {
     displayFeedbacks(feedbacks);
 };
 
-const getFeedbacks = () => axios.get(`/api/feedbacks`).then(feedbackCallback);
-const addFeedback = (body) => axios.post(`/api/feedbacks`, body);
+const getFeedbacks = () => axios.get(`api/feedbacks`).then(feedbackCallback);
+const addFeedback = (body) => axios.post(`api/feedbacks`, body);
 
 
 function submitFeedback(e) {
@@ -17,7 +17,7 @@ function submitFeedback(e) {
 
     let newFeedback = {
         feedback: feedback,
-        resolved: false
+        status: 'Unread'
     }; 
 
     

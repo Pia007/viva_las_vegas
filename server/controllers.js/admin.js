@@ -4,11 +4,10 @@ const {CONNECTION_STRING} = process.env;
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize(CONNECTION_STRING, {
     dialect: 'postgres',
     dialectOptions: {
         ssl: {
-            require: true,
             rejectUnauthorized: false
         }
     }
@@ -54,9 +53,8 @@ module.exports = {
             res.sendStatus(500);
         });
     },
-    // list feed back based on date created
     getAdminFeedback: (req, res) => {
-        sequelize.query(`SELECT created_at AT TIME ZONE 'UTC' AT TIME ZONE 'PST', feedback_id, feedback, resolved
+        sequelize.query(`SELECT created_at AT TIME ZONE 'UTC' AT TIME ZONE 'PST', feedback_id, feedback, status
         FROM feedbacks
         ORDER BY feedback_id ASC;`)
         .then(dbRes => {
@@ -69,9 +67,9 @@ module.exports = {
     },
     // send feedback to the admin
     createFeedback: (req, res) => {
-        const {feedback, resolved} = req.body;
+        const {feedback, status} = req.body;
         console.log(req.body);
-        sequelize.query(`INSERT INTO feedbacks (feedback, resolved ) VALUES ('${feedback}', false);`)
+        sequelize.query(`INSERT INTO feedbacks (feedback, status ) VALUES ('${feedback}', '${status}');`)
         .then(dbRes => {
             console.log(dbRes[0]);
             res.status(200).send(dbRes[0]);
@@ -87,7 +85,7 @@ module.exports = {
         feedbackId = Number(req.params.id);
         console.log(feedbackId);
         
-        sequelize.query(`UPDATE feedbacks SET resolved = true WHERE feedback_id = ${feedbackId};`)
+        sequelize.query(`UPDATE feedbacks SET status = 'Read' WHERE feedback_id = ${feedbackId};`)
         .then(dbRes => {
             console.log(dbRes[0]);
             res.status(200).send(dbRes[0]);

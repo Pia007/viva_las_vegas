@@ -70,7 +70,7 @@
 }
 .delete-btn {
     height: 28px;
-    background: #d45454;
+    background: transparent;
     color: white;
     border: white;
     border-radius: 5px;

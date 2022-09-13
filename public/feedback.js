@@ -10,7 +10,7 @@ const feedbackCallback = ({ data: feedbacks }) => {
 
 const errCallBack = (err) => console.log(err.response.data)
 
-const getFeedbacks = () => axios.get(`/api/feedbacks`).then(feedbackCallback);
+const getFeedbacks = () => axios.get(`${baseURL}/feedbacks`).then(feedbackCallback);
 function createFeedback(feedback) {
     
     let id = feedback.feedback_id;
@@ -35,7 +35,7 @@ function createFeedback(feedback) {
             <div class='d-flex flex-direction-row justify-content-between'>
                 <span class='px-1 '>${feedback.feedback_id}</span>
                 <span class='mx-2'>${feedback.feedback}</span>
-                <span class='px-0 '>${feedback.resolved} </span>
+                <span class='px-0 '>${feedback.status} </span>
             </div>
         </div>
         

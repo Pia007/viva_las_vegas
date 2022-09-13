@@ -8,15 +8,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
+const {SERVER_PORT} = process.env;
 const {seed} = require('./seed.js');
 
 
-app.use(express.static(path.join(__dirname, '../public/')));
-
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', (req, res) => {
-    res.sendfile(path.join(__dirname, '../index.html'));
+    res.sendfile(path.join(__dirname, '.../index.html'));
 
 });
 
@@ -30,6 +29,7 @@ const {
 
 const {
     getAdminVenues,
+    getAdminVenuesLikes,
     getAdminVenuesSort,
     deleteVenue,
     getAdminFeedback,
@@ -65,5 +65,7 @@ app.post('/api/admin/register', registerAdmin);
 app.post('/api/admin/login', loginAdmin);
 
 
+
+// app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
 const port = process.env.PORT || 9007;
 app.listen(port, () => console.log(`Listening on port ${port}`));

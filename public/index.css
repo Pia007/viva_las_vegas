@@ -35,7 +35,7 @@ header {
 nav {
     background: rgb(2, 4, 54);
     /* background: #09357d38; */
-    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 10px;
+    box-shadow: rgba(2, 4, 54, 0.8) 0px 0px 30px;
     z-index: 5;
 }
 
@@ -67,10 +67,12 @@ nav {
 .nav-item:hover,
 .nav-item:active,
 .nav-item:focus {
-    background: #20d693;
+    background: transparent;
+    border: 2px solid #20d693;
     cursor: pointer;
     box-shadow:  inset 5px 5px 10px #2d3d74,
         -5px -5px 10px #3d539e;
+    opacity: 100%;
 }
 .nav-link {
     padding: 5px 10px;
@@ -82,7 +84,7 @@ nav {
 .nav-link:hover,
 .nav-link:active,
 .nav-link:focus {
-    color: #3d539e;
+    color: #20d693;
     font-weight: bold;
     text-decoration: none;
 }
@@ -324,6 +326,10 @@ p {
     }
     .nav-item {
         border: 2px double #20d693;
+    }
+    nav {
+        box-shadow: rgba(2, 4, 54, 0.8) 0px 0px 75px;
+    
     }
 } 
 @media screen and (min-width:992px) {
