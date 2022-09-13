@@ -12,7 +12,7 @@ app.use(express.json());
 const {seed} = require('./seed.js');
 
 
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, './public/index.html')));
 
 app.get('/', (req, res) => {
     res.sendfile(path.join(__dirname, '../index.html'));
@@ -65,4 +65,4 @@ app.post('/api/admin/login', loginAdmin);
 
 
 const port = process.env.PORT || 9007;
-app.listen(SERVER_PORT, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`Listening on port ${port}`));
