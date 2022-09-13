@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const {SERVER_PORT} = process.env;
+
 const {seed} = require('./seed.js');
 
 
@@ -66,5 +66,5 @@ app.post('/api/admin/register', registerAdmin);
 app.post('/api/admin/login', loginAdmin);
 
 
-
-app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
+const port = process.env.PORT || 9007;
+app.listen(SERVER_PORT, () => console.log(`Listening on port ${port}`));
