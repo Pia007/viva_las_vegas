@@ -29,7 +29,6 @@ const {
 
 const {
     getAdminVenues,
-    getAdminVenuesLikes,
     getAdminVenuesSort,
     deleteVenue,
     getAdminFeedback,
@@ -51,7 +50,6 @@ app.put('/api/venues/:id', likeVenue);
 
 
 app.get('/api/venues', getAdminVenues);
-app.get('/api/admin/likes', getAdminVenuesLikes);
 app.get('/api/venues/:sort', getAdminVenuesSort); 
 app.delete('/api/admin/venues/:id', deleteVenue);
 app.get('/api/admin/feedbacks', getAdminFeedback);

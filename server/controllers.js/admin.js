@@ -27,17 +27,6 @@ module.exports = {
             res.sendStatus(500);
         });
     },
-    getAdminVenuesLikes: (req, res) => {
-        sequelize.query(`SELECT * FROM venues ORDER BY likes DESC`)
-        .then(dbRes => {
-            console.log(dbRes[0]);
-            res.status(200).send(dbRes[0]);
-        }).catch(err => {
-            console.log(err);
-            res.sendStatus(500);
-        });
-    },
-    
     getAdminVenuesSort: (req, res) => {
         let {sort} = req.params;
         console.log(sort);

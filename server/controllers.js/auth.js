@@ -16,7 +16,6 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 const bcrypt = require('bcryptjs');
 
 module.exports = {
-    // register the admin
     registerAdmin: (req, res) => {
         console.log('Registering Admin');
         const {username, password} = req.body;
@@ -37,11 +36,8 @@ module.exports = {
             res.sendStatus(500);
         });
     },
-
-    //  admin
     loginAdmin: (req, res) => {
         console.log('Logging in Admin');
-        // const {user, pwd} = req.body;
         let user = req.body.username;
         let pwd = req.body.password;
         console.log(req.body.username);
