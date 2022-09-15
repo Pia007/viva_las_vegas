@@ -33,7 +33,6 @@ module.exports = {
 
         sequelize.query(`SELECT * FROM venues ORDER BY ${sort} ASC;`)
         .then(dbRes => {
-            // console.log(dbRes[0]);
             res.status(200).send(dbRes[0]);
         }).catch(err => {
             console.log(err);
@@ -79,7 +78,7 @@ module.exports = {
         });
     },
 
-    // update the feedback to resolved
+    // update the feedback status
     updateFeedback: (req, res) => {
         let {feedbackId} = req.params.id;
         feedbackId = Number(req.params.id);

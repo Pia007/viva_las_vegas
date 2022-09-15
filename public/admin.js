@@ -181,6 +181,11 @@ function showVenues() {
 
 
 // sort venues by id in ascending order
+
+function sortColunn (column) {
+    let sort = 'columnn';
+    getSortedVenues(sort);
+}
 function sortVenuesByIdAsc() {
     let sort = 'venue_id';
     
@@ -207,7 +212,7 @@ function sortByVenueLikesAsc() {
 
 idBtn.addEventListener('click', sortVenuesByIdAsc);
 venueBtn.addEventListener('click', sortByVenueNameAsc);
-authorBtn.addEventListener('click', sortByVenueAuthorAsc);
+authorBtn.addEventListener('click', sortColumn(author));
 likesBtn.addEventListener('click', sortByVenueLikesAsc);
 
 
