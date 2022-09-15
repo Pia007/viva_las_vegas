@@ -182,7 +182,7 @@ function showVenues() {
 
 // sort venues by id in ascending order
 
-function sortColunn (column) {
+function sortColumn (column) {
     let sort = 'columnn';
     getSortedVenues(sort);
 }
