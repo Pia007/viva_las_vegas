@@ -37,9 +37,7 @@
 
 <h3 style="color: #7DF9FF">Key Dependencies</h3>
 
-<img src="https://img.shields.io/badge/-dotenv-285d95?style=plastic" />
-<img src="https://img.shields.io/badge/-bcryptjs-285d95?style=plastic" />
-<img src="https://img.shields.io/badge/-cors-285d95?style=plastic" />
+<img src="https://img.shields.io/badge/-dotenv-285d95?style=plastic" /> <img src="https://img.shields.io/badge/-bcryptjs-285d95?style=plastic" /> <img src="https://img.shields.io/badge/-cors-285d95?style=plastic" />
 
 <br />
 
