@@ -25,7 +25,7 @@ const {
     getVenues,
     addVenue,
     likeVenue  
-} = require('./controllers.js/general.js');
+} = require('./controllers/general.js');
 
 const {
     getAdminVenues,
@@ -37,12 +37,12 @@ const {
     updateFeedback,
     deleteFeedback
 
-} = require('./controllers.js/admin.js');
+} = require('./controllers/admin.js');
 
 const {
     registerAdmin,
     loginAdmin
-} = require('./controllers.js/auth.js');
+} = require('./controllers/auth.js');
 
 
 app.get('/api/venues', getVenues);
