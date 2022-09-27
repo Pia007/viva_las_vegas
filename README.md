@@ -56,7 +56,7 @@ $ cd viva_las_vegas
 $ npm install 
 
 # Then do the following:
-## Configue a local server and start it.
+## Configure a local server and start it.
 ## Establish a Postgres database and connect to it.
 ## Create a .env file and define your environment variables.
 ## Use an API development tool like Postman to seed your database.
